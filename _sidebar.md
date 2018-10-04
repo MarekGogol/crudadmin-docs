@@ -1,0 +1,14 @@
+- Začíname
+    - [O projekte](README.md)
+    - [Ako to funguje](how-it-works.md)
+    - [Inštalácia](install.md)
+    - [Konfigurácia](config.md)
+    - [Licencia](license.md)
+
+- Admin model
+    - [Prvé kroky](model.md)
+    - [Konfigurácia](model-parameters.md)
+    - [Vstupné hodnoty](model-fields.md)
+    - [Databázové relácie](model-relations.md)
+    - [Pekné url](model-sluggable.md)
+    - [Jazykové mutácie](languages.md#Jazykové-mutácie)
