@@ -1,6 +1,6 @@
 # Ako to funguje
 CrudAdmin funguje na princípe mapovania **Eloquent** modelov s
-dodatočnými parametrami, ktoré po úprave nazývame **Admin modeli**.
+dodatočnými parametrami, ktoré po úprave nazývame **Admin modely**.
 Pomocou Admin modelov sa vygeneruje celé administračné rozhranie,
 formuláre s automatickou validáciou a kompletnou databázou s reláciami.
 
@@ -16,12 +16,12 @@ navigovaniu používateľa a všetko kompletné prelinkuje.
 
 ![models-structure](images/models-structure.png)
 
-?> **Tip.** Ikony vyberá automaticky podľa názvov modelov.
+?> **Tip.** Ikony vyberá automaticky podľa názvov modelov v angličtine. https://github.com/MarekGogol/crudadmin/blob/master/src/Traits/ModelIcons.php
 
 ---
 
 ## Generovanie a validácia formulárov
-Rozšírenie automaticky podľa konfigurácie v **admin modeli** vysklada formuláre aj s ich kompletnou validáciou.
+Rozšírenie automaticky podľa konfigurácie v **admin modely** vysklada formuláre aj s ich kompletnou validáciou.
 
 ![admin-form](images/admin-form.png)
 
@@ -41,7 +41,7 @@ rodičovského záznamu bolo zobrazené ďalšie vnorené rozšírenie.
 ![article-relationship-model](images/article-relationship-model.png)
 
 #### 2. Zmigrovanie databázy
-Všetky zmeny v **admin modeli**, ktoré sú reprezentované v stĺpcoch v databáze, je potrebne zmigrovať
+Všetky zmeny v **admin modely**, ktoré sú reprezentované v stĺpcoch v databáze, je potrebne zmigrovať
 pomocou `artisan` príkazu.
 ![article-migrate](images/article-migration.png)
 

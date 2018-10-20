@@ -140,7 +140,7 @@ protected $sluggable = 'field-name';
 
 !> V databáze sa v tabuľke vytvorí stĺpec `slug`, ktorý bude obsahovať hodnotu z požadovaného stĺpca bez diakritiky a v tvare **nice url** adresy.
 
-?> Viac o generovaní url adries pre hodnoty v modeli a ich následne vyhľadávanie nájdete v sekcii [pekné url](model-sluggable.md).
+?> Viac o generovaní url adries pre hodnoty v modely a ich následne vyhľadávanie nájdete v sekcii [pekné url](model-sluggable.md).
 
 ---
 
@@ -156,7 +156,7 @@ protected $active = true;
 
 #### Preskočenie mazania stĺpcov v automatických migráciach
 Ak je vaš Admin Model napojený na už existujúcu tabuľku v databáze, ktorá kolaboruje s iným projektom a obsahuje ďalšie stĺpce, ktoré
-nie sú definované v Admin Modeli, v tomto prípade vieme zadefinovať ignorovanie týchto sĺpcov pomocou nasledujúceho parametru.
+nie sú definované v Admin modely, v tomto prípade vieme zadefinovať ignorovanie týchto sĺpcov pomocou nasledujúceho parametru.
 
 ```php
 protected $skipDropping = ['column_x', 'column_y'];

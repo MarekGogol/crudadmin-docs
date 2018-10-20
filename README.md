@@ -11,8 +11,8 @@ dátmi v databáze.
 ## Čo všetko podporuje?
 
 Kedže ide o systém postavený na frameworku **Laravel 5**, ponúka jednoduchú a
-ucelenú štruktúru pri programovaní. Laravel model dostal nadstavu a
-nazývame ho **admin model**. Po jednoduchom vytvorení admin modelu systém
+ucelenú štruktúru pri programovaní. Laravel model dostal nadstavbu a
+nazývame ho **Admin model**. Po jednoduchom vytvorení admin modelu systém
 automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
@@ -45,7 +45,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-language) Jazykové mutácie
-> Automatický vytvori jazykovú tabuľku, prepoji dane modely s danými jazykmi a postara sa o automatické prepinanie jazykov ako na stranke administrácie, tak i na strane frontendu. Taktiež podporuje technológiu Gettext pre prekladanie statických textov.
+> Automatický vytvori jazykovú tabuľku, prepoji dane modely s danými jazykmi a postara sa o automatické prepinanie jazykov ako na stránke administrácie, tak i na strane frontendu. V spolupráci s Gettext rozšírením, je možné spravovať preklady statických textov ako v zdrojových šablonách aplikácie, no taktiež aj v javascriptoch.
 
 <!-- -->
 > #### (fa-table) Výpis dát
@@ -53,11 +53,11 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-pencil-square-o) Vtupné polia
-> Podporuje veľke množstvo vstupných hodnôt od obyčajného textu, textarei, čísla, des. čísla, textového editoru, dátumu, času, selectboxu, checkboxu až po automatické uploadovanie súborov.
+> Podporuje veľke množstvo vstupných hodnôt od obyčajného textu, textarei, čísla, des. čísla, textového editoru, dátumu, času, selectboxu, checkboxu až po automatické uploadovanie súborov. Pre tých zdatnejších, alebo pre projekty s veľkym dôrazom pre unikátnosť, system podporuje aj možnosť vytvorenia vlastných kustomizovateľných komponent.
 
 <!-- -->
 > #### (fa-key) Relácie
-> Automatický sa postara o vygenerovanie všetkych relácii v databáze a prepojenie naviazaných formulárov. Taktiež odstránil nutnosť písania vzťahov v eloquente. Tieto vzťahy medzi modelmi sú od teraz prepojené automaticky. Podporuje belongsTo, belongsToMany, hasMany, hasOne, manyToMany...
+> Automatický sa postara o vygenerovanie všetkych relácii v databáze a prepojenie naviazaných formulárov. Taktiež odstránil nutnosť písania vzťahov v Eloquente. Tieto vzťahy medzi modelmi sú od teraz prepojené automaticky. Podporuje belongsTo, belongsToMany, hasMany, hasOne, manyToMany...
 
 <!-- -->
 > #### (fa-terminal) Jednoduchá inštalácia

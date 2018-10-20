@@ -11,4 +11,4 @@
     - [Vstupné hodnoty](model-fields.md)
     - [Databázové relácie](model-relations.md)
     - [Pekné url](model-sluggable.md)
-    - [Jazykové mutácie](languages.md#Jazykové-mutácie)
+    - [Jazykové mutácie](languages.md)

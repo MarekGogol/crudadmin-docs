@@ -2,7 +2,7 @@
 
 ## Minimálne požiadavky
 1. Laravel 5.3
-2. PHP 5.6
+2. PHP 7.0
 3. MySql 5.7
 4. Apache / Nginx
 
@@ -23,8 +23,8 @@ php artisan key:generate
 
 ---
 
-## 2. Pridani rozšírenia CrudAdmin
-Po úspešnej inštalácii Laravelu potrebujeme pridať nové rozšírenie. Balíček môžte taktiež nájsť taktiež na adrese https://packagist.org/packages/marekgogol/crudadmin.
+## 2. Pridanie rozšírenia CrudAdmin
+Po úspešnej inštalácii Laravelu potrebujeme pridať nové rozšírenie. Balíček môžte taktiež nájsť na adrese https://packagist.org/packages/marekgogol/crudadmin.
 
 ### Cez composer
 
@@ -32,7 +32,7 @@ Po úspešnej inštalácii Laravelu potrebujeme pridať nové rozšírenie. Bal�
 composer require "marekgogol/crudadmin"
 ```
 
-### Registrácia rozšírenia do Laravelu
+### Registrácia rozšírenia do Laravelu (Laravel < 5.5)
 Pri verzii **Laravelu 5.5** a novšiej sa rozšírenie zaregistruje automaticky. V prípade nižšiej verzie postupujte nasledovne.
 
 Pridáme do `config/app.php` service provider, ktorým povieme Laravelu aby načítal náš balíček.
@@ -50,7 +50,7 @@ php artisan admin:install
 
 Po spustení prikazu inštalácie sa vykonaju tieto zmeny
 
-1. Nakopíruje sa `/assets` so všetkými public súbori do priečinku `/public/assets/admin`
+1. Nakopírujú sa `assets` súbory so všetkými public súbormi do priečinku `/public/vendor/crudadmin`
 2. Vytvori sa konfiguráčny súbor administrácie `/config/admin.php`
 3. Vytvorí sa základná databázova vrstva s tabuľkou používateľov a jedným demo účtom. Prihlásovacie údaje uvidíte v termináli.
 4. vymaže sa nepotrebná migrácia pre vytvorenie tabuľky používateľov `/database/migrations/2014_10_12_100000_create_password_resets_table.php`
@@ -58,8 +58,8 @@ Po spustení prikazu inštalácie sa vykonaju tieto zmeny
 ## 4. Huráá, hotovo!
 Gratulujem. Rozšírenie bolo úspešne nainštalované a momentálne je všetko priprávene k tvorbe vášho projektu.
 
-![login](images/login-screen.png)
-
 !> Administrácia je dostupná na adrese http://yourdomain.com/admin
 
 !> Prihlásovacie údaje boli vygenerované pri inštalácii v termináli, po prihláseni ich môžete zmeniť.
+
+![login](images/login-screen.png)
