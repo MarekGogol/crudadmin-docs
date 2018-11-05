@@ -1,4 +1,4 @@
-# Vstupné hodnoty
+# Zoznam vstupných hodnôt
 Základna konfigurácia Admin Modelu pozostáva zo vstupných hodnôt, ktoré reprezentujú informácie o všetkých stĺpcoch v databáze,
 pravidla validácie formulárov, reláciach a nastavení gerenovania administračného rozhrania od formulárov, až po tabuľky výpisu.
 

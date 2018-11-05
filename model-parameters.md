@@ -9,7 +9,7 @@ Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, kto
 - [Obmedzenia obsahu](#_3-Obmedzenia-obsahu)
 
 !> Pri všetkých nastaveniach parametroch, ktoré sú reprezentované vytvorením dodatočného stĺpca v databáze, či zmenu už existujúceho, je potrebne vykonať
-   automatickú migráciu databázy pomocou príkazu v `php artisan admin:migrate`, ktorý automatický a inteligentne synchronizuje celú databázu.
+   automatickú migráciu databázy pomocou príkazu v `php artisan admin:migrate`, ktorý automatický a inteligentne synchronizuje celú relačnú databázu.
 
 ---
 
@@ -17,12 +17,9 @@ Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, kto
 Medzi najdôležitejšie parametre patria vstupné hodnoty, ktoré obsahuju informácie o všetkých stĺpcoch v databáze a ich pravidla
 pre validáciu. Podľa vstupných hodnôt sa taktiež automaticky synchronizuje databáza.
 
----
-
-#### Zoznam vstupných hodnôt
 Zoznam všetkých stĺpcov v databáze, vstupov vo formulároch, dát vo vypíse záznamov je reprezentovaný parametrom `$fields`.
 
-**Pre statické vstupné hodnoty:**
+##### Pre statické vstupné hodnoty:
 ```php
 protected $fields = [
     'name' => 'name:Názov|placeholder:Zadajte názov článku|type:string|required|max:90',
@@ -32,7 +29,8 @@ protected $fields = [
 ];
 ```
 
-**Pre dynamický generované vstupné hodnoty:**
+##### Pre dynamický generované vstupné hodnoty:
+Pri dynamickom generovaní parametrov, je možné pozmeniť pravidla pre ukladanie záznamu, kde sa ako parameter funkcie vráti upravovaný záznam.
 ```php
 public function fields($row)
 {
@@ -46,16 +44,16 @@ public function fields($row)
 !> Pri akej koľvek zmene v týchto nastaveniach, ktoré súvisia s nastavením databázy je potrebne vykonať automatickú migráciu
    pomocou príkazu `php artisan admin:migrate`, ktorá inteligentne a automatický synchronizuje celú databázu.
 
-?> Kompletné informácie o nastavení vstupných hodnôt nájdete v sekcii [vstupné hodnoty](model-fields.md#Vstupné-hodnoty).
+?> Kompletné informácie o nastavení vstupných hodnôt nájdete v sekcii [zoznam vstupných hodnôt](model-fields.md).
 
 ---
 
 ## 2. Základné parametre
-Medzi základné parametre patria najbanalnejšie konfigurácie Admin Modelu ako názov, popis a ostatné bežné konfigurácie.
+Medzi základné parametre patria najbanalnejšie konfigurácie Admin Modelu ako názov, popis a ostatné bežné nastavenia.
 
 #### Dátum vytvorenia Admin Modela
 Jeden z povinných parametrov je `$migration_date` v ktorom je zadefinovaný dátum a čas vytvorenia modela. Pomocou tohto dátumu
-bude administrácia zoradzovať rozšírenia a vyskládavať databázu v správnom poradi.
+bude administrácia zoradzovať rozšírenia a vyskládavať štruktúru administrácie v správnom poradi.
 
 ```php
 protected $migration_date = '2017-11-05 10:00:00';
@@ -67,7 +65,7 @@ protected $migration_date = '2017-11-05 10:00:00';
 
 ---
 
-#### Názov rozšírenia
+#### Názov rozšírenia / modelu
 Názov sekcie v administrácii je definovaný pomocou parametru `$name`.
 
 ```php
@@ -87,7 +85,7 @@ protected $title = 'Upravte zoznam článkov v sekcii blog.';
 ---
 
 #### Skupina modulov v administrácii
-Sekciu v administrácii je možné priradiť do podskupiny, ktorú je možné definovali pri [konfigurácii systému](config.md#_2-Skupina-rozšírení).
+Sekciu v administrácii je možné priradiť do podskupiny, ktorú je možné definovať pri [konfigurácii systému](config.md#_2-Skupina-rozšírení).
 
 ```php
 protected $group = 'settings';
@@ -111,13 +109,13 @@ protected $localization = true;
 ---
 
 #### Vzťahy medzi modelmi
-Pre vetvenie obsahu existuje parameter `$belongsToModel`, ktorý definuje vzťah medzi dvoma alebo viacerími Admin Modelmi.
+Pre vetvenie obsahu existuje parameter `$belongsToModel`, ktorý definuje vzťah medzi dvoma alebo viacerými Admin Modelmi.
 
 ```php
 protected $belongsToModel = Article::class;
 ```
 
-alebo
+Pri kombinacii, ak je model dieťaťom viacerých Admin Modelov zároveň, je možné parameter zapísať vo forme poľa.
 
 ```php
 protected $belongsToModel = [Article::class, News::class, Blog::class];

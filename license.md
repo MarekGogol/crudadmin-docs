@@ -11,11 +11,9 @@ budú nedotknuté buducími zmenamy v podmienkach predaja.
     /*
      * License key
      */
-    'license_key' => 'campaignunlimited2017',
+    'license_key' => 'campaign2019',
 ```
 
 ---
 
-<div style="text-align: center;">
-    ![donate](images/donate.gif)
-</div>
+![donate](images/donate.gif)

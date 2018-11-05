@@ -8,7 +8,7 @@
 - Admin model
     - [Prvé kroky](model.md)
     - [Konfigurácia](model-parameters.md)
-    - [Vstupné hodnoty](model-fields.md)
+    - [Zoznam vstupných hodnôt](model-fields.md)
     - [Databázové relácie](model-relations.md)
     - [Pekné url](model-sluggable.md)
     - [Jazykové mutácie](languages.md)
