@@ -8,7 +8,7 @@ pravidla validácie formulárov, reláciach a nastavení gerenovania administra�
 !> Databáza je automatický synchronizovaná pri každej úprave vstupných hodnôt pomocou automatických migrácii
 
 ## Konfigurácia vstupných hodnôt
-Skladá sa z viac rozmerného poľa definované vlastnosťou `fields` ktorá je uložená v Admin Modeli, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
+Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modeli, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
 konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
 
 Konfigurácia môže mať 2 podoby. Jedná z ních je vo formáte poľa,
@@ -17,6 +17,8 @@ Prve 2 položky `name` a `content` označujú vstupné hodnoty pre
 názov a obsah. Tretí parameter image je vstup pre nahranie obrázku.
 
 ##### Zápis v podobe stringu
+Tento zápis sa odporúča pre všetky formy písania vstupných hodnôt.
+
 ```php
 protected $fields = [
     'name' => 'name:Názov|placeholder:Zadajte názov článku|type:string|required|max:90',
@@ -26,6 +28,8 @@ protected $fields = [
 ```
 
 ##### Rovnaký zápis v podobe poľa
+Nodporúčaný zápis, z dôsledku veľkého množstvá riadkov v súbore pri modeloch, ktoré obsahujú desiatký vstupných hodnôt. Odporúčana forma zápisu vstupných hodnôt je kombinovanie oboch zápísov, kde v niektorých prípadoch je nutné použiť pravidlá pre validáciu záznamov vo forme [Rules z laravelu](https://laravel.com/docs/5.7/validation#custom-validation-rules).
+
 ```php
 protected $fields = [
     'name' => [

@@ -71,6 +71,9 @@ Názov sekcie v administrácii je definovaný pomocou parametru `$name`.
 ```php
 protected $name = 'Články';
 ```
+
+![modelname](images/article-modelname.png)
+
 !> Povinný parameter, automaticky vygenerovaný.
 
 ---
@@ -80,7 +83,9 @@ Popis sekcie v administrácii je definovaný pomocou **nepovinného** parametru 
 
 ```php
 protected $title = 'Upravte zoznam článkov v sekcii blog.';
+
 ```
+![modeltitle](images/article-modeltitle.png)
 
 ---
 
@@ -90,6 +95,8 @@ Sekciu v administrácii je možné priradiť do podskupiny, ktorú je možné de
 ```php
 protected $group = 'settings';
 ```
+
+![groupsettings](images/group-settings.png)
 
 ---
 
@@ -138,7 +145,7 @@ protected $sluggable = 'field-name';
 
 !> V databáze sa v tabuľke vytvorí stĺpec `slug`, ktorý bude obsahovať hodnotu z požadovaného stĺpca bez diakritiky a v tvare **nice url** adresy.
 
-?> Viac o generovaní url adries pre hodnoty v modely a ich následne vyhľadávanie nájdete v sekcii [pekné url](model-sluggable.md).
+?> Viac o generovaní url adries pre hodnoty v modely a ich následne vyhľadávanie nájdete v sekcii [pekné url](model-sluggable.md#pekné-url).
 
 ---
 
@@ -251,6 +258,6 @@ protected $single = false;
 !> Pri aktivácii režimu, budu parametre `$minimum` a `$maximum` automatický nastavené na hodnotu `1`.
    Parameter `$sortable` a `$publishable` bude nastavený na `false`, s čim súvisi migrácia databázy.
 
-?> Vhodné pre uloženie informácii do statických podstránok, ako je podstránka **O nás**, **Kontakt** atď...
+?> Vhodné pre uloženie informácii do statických podstránok, ako je podstránka **O nás**, **Kontakt**, či úpravu konfiguráčných prvkov aplikácie, ktoré nepotrebujú viac záznamov v tabuľke...
 
 ---
