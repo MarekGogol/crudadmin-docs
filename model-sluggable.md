@@ -14,6 +14,8 @@ example.com/clanok/**1**
 <br>
 example.com/clanok/**moj-clanok**
 
+<hr>
+
 ## Generovanie pekných url adries
 Pre tento prípad poskytuje rozšírenie CrudAdmin jednoduchú správu generovanie slugov na základe hodnôt z databázy pomocou vlastnosti `sluggable` v Admin Modeli.
 
@@ -42,6 +44,8 @@ Po zadefinovaní vlastnosti `sluggable`, ktorá reprezentuje stĺpec poľa, z kt
 
 !> V prípade, že vygenerovaná hodnota slugu po vytvorení záznamu už v databáze existuje, bude za adresu slugu dosadená inkrementálna hodnota v poradí existéncie daného slugu. V preklade pokial 3 záznamy obsahuju názov **Môj članok**, slugy budú vygenerované s nasledujúcimi hodnotmi **moj-clanok**, **moj-clanok-1**, **moj-clanok-2**.
 
+<hr>
+
 ## Podpora viac jazyčných slugov
 Pokiaľ vstupné pole obsahuje parameter `locale`, ktorý prekladá záznam do viacerých jazykov, bude hodnota v stĺpci `slug` uložená vo formáte typu **JSON**, kde každý jazyk bude obsahovať vlastnú hodnotu slugu.
 
@@ -63,6 +67,8 @@ protected $fields = [
 !> Pokial záznam nemá v administrácii priradený preklad, systém CrudAdmin automatický použije slug z hlavného jazyka, alebo dostupnej preloženej hodnoty.
 
 ?> Viac o preklade záznamov a textu nájdete v sekcii [jazykové mutácie](languages.md#Jazykové-mutácie).
+
+<hr>
 
 ## Výber záznamu pomocou slugu
 

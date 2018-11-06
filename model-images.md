@@ -1,0 +1,3 @@
+# Práca s obrázkami a súbormi
+
+Pripravuje sa...

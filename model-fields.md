@@ -7,6 +7,8 @@ pravidla validácie formulárov, reláciach a nastavení gerenovania administra�
 
 !> Databáza je automatický synchronizovaná pri každej úprave vstupných hodnôt pomocou automatických migrácii
 
+<hr>
+
 ## Konfigurácia vstupných hodnôt
 Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modeli, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
 konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
@@ -80,6 +82,8 @@ public function fields($row)
     ]
 }
 ```
+
+<hr>
 
 ## Zoznam dostupných vstupov
 
@@ -204,11 +208,11 @@ Podpora načítania hodnôt do selectu alebo multiselectu z existujúcich zázna
 
 Ako prvá hodnota parametru je reprezentovaný názov tabuľky v databáze, druhá hodnota reprezentuje názov stĺpca, z ktorého budú dáta v zozname vypísane používateľovi.
 
-**One to One**
+**One to One / Many to One**
 
 `belongsTo:users,name`
 
-**One to Many**
+**Many to Many**
 
 `belongsToMany:users,name`
 
@@ -216,7 +220,7 @@ Pre kombináciu stĺpcov vo výpise s vlastným textom je možné použiť dosad
 
 `belongsTo:users,:firstname :lastname - Vek :age`
 
-!> Viac o reláciach nájdete v sekcii [Databázové relácie](model-relations.md)
+!> Viac o reláciach nájdete v sekcii [Databázové relácie](model-relations.md#databázové-relácie)
 
 <hr>
 
