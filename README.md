@@ -33,7 +33,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-wpforms) Formuláre
-> Automaticky navrhne všetky formuláre v administrácii, prepoji ich s databázou, postara sa o kompletnú validáciu položiek vo formulári a následne uloženie a prácu so záznamom v databáze.
+> Automaticky navrhne všetky formuláre v administrácii, prepoji ich s databázou, postará sa o kompletnú validáciu položiek vo formulári a následne uloženie a prácu so záznamom v databáze.
 
 <!-- -->
 > #### (fa-exclamation) Validácia
@@ -45,7 +45,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-language) Jazykové mutácie
-> Automatický vytvori jazykovú tabuľku, prepoji dane modely s danými jazykmi a postara sa o automatické prepinanie jazykov ako na stránke administrácie, tak i na strane frontendu. V spolupráci s Gettext rozšírením, je možné spravovať preklady statických textov ako v zdrojových šablonách aplikácie, no taktiež aj v javascriptoch.
+> Automatický vytvori jazykovú tabuľku, prepoji dane modeli s danými jazykmi a postará sa o automatické prepinanie jazykov ako na stránke administrácie, tak i na strane frontendu. V spolupráci s Gettext rozšírením, je možné spravovať preklady statických textov ako v zdrojových šablonách aplikácie, no taktiež aj v javascriptoch.
 
 <!-- -->
 > #### (fa-table) Výpis dát
@@ -57,7 +57,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-key) Relácie
-> Automatický sa postara o vygenerovanie všetkych relácii v databáze a prepojenie naviazaných formulárov. Taktiež odstránil nutnosť písania vzťahov v Eloquente. Tieto vzťahy medzi modelmi sú od teraz prepojené automaticky. Podporuje belongsTo, belongsToMany, hasMany, hasOne, manyToMany...
+> Automatický sa postará o vygenerovanie všetkych relácii v databáze a prepojenie naviazaných formulárov. Taktiež odstránil nutnosť písania vzťahov medzi Eloquentmi. Tieto vzťahy medzi modelmi sú od teraz prepojené automaticky. Podporuje belongsTo, belongsToMany, hasMany, hasOne, manyToMany...
 
 <!-- -->
 > #### (fa-terminal) Jednoduchá inštalácia
