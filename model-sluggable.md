@@ -80,9 +80,31 @@ class ArticleController extends Controller
 {
     ...
 
+    /*
+     *   example.com/article/{slug}
+     */
     public function show($slug)
     {
         $article = Article::findBySlugOrFail($slug);
+
+        return view('article')->withArticle($article);
+    }
+```
+
+##### Výber záznamu z databázy pomocou slugu a id záznamu zároveň
+K výberu záznamu pomocou hodnoty `slug` je možné vyberať záznam taktiež aj pomocou `id` záznamu zároveň. Ak funkcia `findBySlug` alebo `findBySlugOrFail` dostane ako druhý parameter `id` daného záznamu, skontroluje pravosť slugu v url adrese, a pri nezhode slugu s databázou automaticky presmeruje klienta na správnu url adresu záznamu s hlavičkou kódu `301`.
+
+```php
+class ArticleController extends Controller
+{
+    ...
+
+    /*
+     *   example.com/article/{id}/{slug}
+     */
+    public function show($id, $slug)
+    {
+        $article = Article::findBySlugOrFail($slug, $id);
 
         return view('article')->withArticle($article);
     }

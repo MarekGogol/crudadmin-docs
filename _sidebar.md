@@ -10,6 +10,8 @@
     - [Konfigurácia](model-parameters.md)
     - [Zoznam vstupných hodnôt](model-fields.md)
     - [Databázové relácie](model-relations.md)
+    - [Jazykové mutácie](languages.md)
+
+- Frontend
     - [Pekné url](model-sluggable.md)
     - [Práca s obrázkami a súbormi](model-images.md)
-    - [Jazykové mutácie](languages.md)
