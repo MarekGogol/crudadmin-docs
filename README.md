@@ -52,7 +52,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 > Automatický navrhne všetky tabuľky pre inteligentný a prehliadny výpis dát v administrácii. Postará sa o možnosť pridania záznamov, úpravy, mazania, skývania záznamov a zmeny ich poradia.
 
 <!-- -->
-> #### (fa-pencil-square-o) Vtupné polia
+> #### (fa-pencil-square-o) Vstupné polia
 > Podporuje veľke množstvo vstupných hodnôt od obyčajného textu, textarei, čísla, des. čísla, textového editoru, dátumu, času, selectboxu, checkboxu až po automatické uploadovanie súborov. Pre tých zdatnejších, alebo pre projekty s veľkym dôrazom pre unikátnosť, system podporuje aj možnosť vytvorenia vlastných kustomizovateľných komponent.
 
 <!-- -->
