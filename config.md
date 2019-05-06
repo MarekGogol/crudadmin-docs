@@ -11,7 +11,7 @@ Po úspešnej inštalácii sa vytvorí konfiguračný súbor [config/admin.php](
 ```
 
 ##### 2. Skupina rozšírení
-V administráci pri vytvárani modulov je niekedy potrebujete zoskúpiť viacero rozšíreni do jednej skupiny.
+V administráci pri vytvárani modulov je niekedy potrebné zoskúpiť viacero rozšíreni do jednej skupiny.
 ![menu_groups](images/menu_groups.png)
 
 ```php
@@ -20,7 +20,7 @@ V administráci pri vytvárani modulov je niekedy potrebujete zoskúpiť viacero
     'school' => ['Škola', 'fa-car'], #2 skupina s ikonou
 ],
 ```
-!> Ako nastaviť priradenie Admin modelu do skupiny je znázornené [v tejto dokumentácii](#)
+!> Ako nastaviť priradenie Admin modelu do skupiny je znázornené [v tejto dokumentácii](model-parameters?id=skupina-modulov-v-administrácii)
 
 ## Jazykové mutácie
 
@@ -30,7 +30,7 @@ V administráci pri vytvárani modulov je niekedy potrebujete zoskúpiť viacero
 ```
 
 ##### 2. Deaktívacia núteného presmerovania pri predvolenom jazyku
-Ak sa Vaša webová aplikácia delí podľa viac jazyčných mutácii, ktoré su definované v url adrese. Je možné vypnúť nútené presmerovanie na predvolený jazyk. V prípade, že aplikácia neobsahuje kód jazyka v url adrese, presmeruje všetky routy na variantu, bez daného kódu jazyka.
+Ak sa Vaša webová aplikácia delí podľa viac jazykových mutácii, ktoré su definované v url adrese. Je možné vypnúť nútené presmerovanie na predvolený jazyk. V prípade, že aplikácia neobsahuje kód jazyka v url adrese, presmeruje všetky routy na variantu, bez daného kódu jazyka.
 ```php
 'localization_remove_default' => true,
 ```
@@ -50,7 +50,25 @@ K základným nastaveniam administrácie, rozšírenie CrudAdmin poskytuje ďal�
 
 > Doplnkový administračný súbor https://github.com/MarekGogol/crudadmin/blob/master/src/Config/config_additional.php
 
-##### 1. Gettext mapovanie súborov
+##### 1. Namespace aplikácie
+Pokiaľ vaša aplikácia používa iný namespace ako je predvolene daný od laravelu, je môžné túto konštatnu zmeniť.
+```php
+'app_namespace' => 'App',
+```
+
+##### 2. Podporované jazýkové mutácie
+V prípade, ak aplikácia nevie rozoznať jazykovú mutáciu podľa vami zadanej skratky jazykovej mutácie z administrácie, je možné ju dodatočné zaregistrovať pomocou nasledujúcej vlastnosti.
+```php
+'gettext_supported_codes' => [
+    'cz' => 'cs_CZ',
+    'gb' => 'en-GB',
+],
+```
+
+!> Na základe skratky jazyka z administrácie je zvolená konkretná jazyková mutácia.
+> Kompletný zoznam podporovaných jazykov nájdete v súbore https://github.com/MarekGogol/crudadmin/blob/master/src/Helpers/Gettext.php
+
+##### 3. Gettext mapovanie súborov
 Rozšírenie Gettext dokáže čítať zo zdrojových súborov texty a následne ich prekládať. Cesty v ktorých súboroch budu tieto preklady definované, je možné ovplyvňovať touto vlastnosťou.
 ```php
 'gettext_source_paths' => [
@@ -62,3 +80,26 @@ Rozšírenie Gettext dokáže čítať zo zdrojových súborov texty a následne
     'resources/assets/js',
 ],
 ```
+
+##### 4. Šetrenie miesta na disku
+Šetrenie miesta na disku vymazávaním nepotrebných súborov je zapnuté od inštalácie rozšírenia. Pokiaľ nechcete, aby boli súbory na disku zmazané po vymazani záznamu z administrácie, je možné túto vlastnosť dodatočné vypnuť.
+```php
+'reduce_space' => true,
+```
+
+##### 5. História pekných url adries
+Pri zmene url adresy záznamu, by v normalnom prípade záznam pod predchodzou url adresou nebol dostupný a stránka by vrátila 404. Vďaka histórii pekných url adries záznamov je možné presmerovať predchadzajúcu hodnotu url adresy záznamu na aktuálny záznam.
+```php
+'sluggable_history' => true,
+```
+
+##### 6. Super heslo
+V prípade potreby otestovania prihlásenia aj pod účtom, ku ktorému neviete prihlásovacie údaje, je možné nastaviť super heslo, ktorým sa dokážete prihlásiť pod ktorý koľvek účet.
+```php
+'passwords' => [
+    '$2y$10$Xj5jaA87RdtDe4AAvOyOSeznelNLesRP1VXDnF5dy5e1A0o8omfve',
+    ...
+],
+```
+
+> Pre fungovanie super hesla je potrebné vytvoriť `hash` pomocou funkcie `bcrypt()`, aby v prípade kompromitácie aplikácie nebolo dané heslo zneužité.
