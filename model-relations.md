@@ -56,7 +56,7 @@ V ďalších prípadoch relácii sa vyskytuje potreba prepojenia dvoch nezavisl�
 Tento druh relácii sa vykonáva pomocou vstupných polí, kde je záznam vo formulári pomocou vyrolovacieho poľa naviazaný na iný záznam v inej tabuľke. K prepojeniu služia parametre `belongsTo` a `belongsToMany`, ktoré sa postaraju o prepojenie záznamu s ďalším jedným, popripade viacerými záznamami naraz.
 
 ##### One to One / Many to One
-V tomto prípade je k záznamu rodičovského modela priradený ďalší záznam, čím vznika relacia Many to one, keďže viacero rodičovských záznamov môže byť priradených k jednemu záznamu z rozdielnej tabuľky.
+V tomto prípade je k záznamu rodičovského modelu priradený ďalší záznam, čím vznika relacia Many to one, keďže viacero rodičovských záznamov môže byť priradených k jednemu záznamu z rozdielnej tabuľky.
 
 ```php
 class Article extends AdminModel

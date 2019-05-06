@@ -20,7 +20,7 @@ V administráci pri vytvárani modulov je niekedy potrebujete zoskúpiť viacero
     'school' => ['Škola', 'fa-car'], #2 skupina s ikonou
 ],
 ```
-!> Ako nastaviť priradenie Admin modela do skupiny je znázornené [v tejto dokumentácii](#)
+!> Ako nastaviť priradenie Admin modelu do skupiny je znázornené [v tejto dokumentácii](#)
 
 ## Jazykové mutácie
 

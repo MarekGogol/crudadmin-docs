@@ -51,8 +51,8 @@ public function fields($row)
 ## 2. Základné parametre
 Medzi základné parametre patria najbanalnejšie konfigurácie Admin Modelu ako názov, popis a ostatné bežné nastavenia.
 
-#### Dátum vytvorenia Admin Modela
-Jeden z povinných parametrov je `$migration_date` v ktorom je zadefinovaný dátum a čas vytvorenia modela. Pomocou tohto dátumu
+#### Dátum vytvorenia Admin Modelu
+Jeden z povinných parametrov je `$migration_date` v ktorom je zadefinovaný dátum a čas vytvorenia modelu. Pomocou tohto dátumu
 bude administrácia zoradzovať rozšírenia a vyskládavať štruktúru administrácie v správnom poradi.
 
 ```php

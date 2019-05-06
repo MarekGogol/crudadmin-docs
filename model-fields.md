@@ -2,14 +2,15 @@
 Základna konfigurácia Admin Modelu pozostáva zo vstupných hodnôt, ktoré reprezentujú informácie o všetkých stĺpcoch v databáze,
 pravidla validácie formulárov, reláciach a nastavení gerenovania administračného rozhrania od formulárov, až po tabuľky výpisu.
 
-- [Konfigurácia vstupných hodnôt](#Konfigurácia-vstupných-hodnôt)
+- [Zápis vstupných hodnôt](#Zápis-vstupných-hodnôt)
 - [Zoznam dostupných vstupov](#Zoznam-dostupných-vstupov)
+- [Dodatočná konfigurácia vstupov](#Zoznam-dostupných-vstupov)
 
 !> Databáza je automatický synchronizovaná pri každej úprave vstupných hodnôt pomocou automatických migrácii
 
 <hr>
 
-## Konfigurácia vstupných hodnôt
+## Zápis vstupných hodnôt
 Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modeli, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
 konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
 
@@ -253,3 +254,9 @@ Pre format dátumu a času zároveň:
 Pre výber viacero dátumov naraz, je dostupný voliteľný parameter `multiple`.
 
 Pre upravu formatu dátumu, je dostupný voliteľný parameter s vlastnou hodnotou `format:d.m.Y`.
+
+<hr>
+
+## Dodatočná konfigurácia vstupov
+
+Pripravuje sa..
