@@ -8,18 +8,16 @@ Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, kto
 - [Základné parametre](#_2-Základné-parametre)
 - [Obmedzenia obsahu](#_3-Obmedzenia-obsahu)
 
-!> Pri všetkých nastaveniach parametroch, ktoré sú reprezentované vytvorením dodatočného stĺpca v databáze, či zmenu už existujúceho, je potrebne vykonať
+!> Pri všetkých konfiguráciach parametrov, ktoré sú reprezentované vytvorením stĺpca v databáze, či zmenu už existujúceho stĺpca alebo jeho vlastnosti, je potrebne vykonať
    automatickú migráciu databázy pomocou príkazu v `php artisan admin:migrate`, ktorý automatický a inteligentne synchronizuje celú relačnú databázu.
 
 ---
 
 ## 1. Vstupné hodnoty
-Medzi najdôležitejšie parametre patria vstupné hodnoty, ktoré obsahuju informácie o všetkých stĺpcoch v databáze a ich pravidla
-pre validáciu. Podľa vstupných hodnôt sa taktiež automaticky synchronizuje databáza.
-
-Zoznam všetkých stĺpcov v databáze, vstupov vo formulároch, dát vo vypíse záznamov je reprezentovaný parametrom `$fields`.
+Zoznam a nastavenie všetkých stĺpcov v databáze, vstupov vo formulároch, validácia, dáta vo vypíse záznamov sú reprezentované parametrom `$fields`.
 
 ##### Pre statické vstupné hodnoty:
+
 ```php
 protected $fields = [
     'name' => 'name:Názov|placeholder:Zadajte názov článku|type:string|required|max:90',
@@ -30,7 +28,10 @@ protected $fields = [
 ```
 
 ##### Pre dynamický generované vstupné hodnoty:
-Pri dynamickom generovaní parametrov, je možné pozmeniť pravidla pre ukladanie záznamu, kde sa ako parameter funkcie vráti upravovaný záznam.
+Pri dynamickom generovaní parametrov, je možné pozmeniť pravidla pre ukladanie záznamu, kde sa ako parameter funkcie vráti práve upravovaný záznam v databáze.
+
+?> V nasledujúcom príklade je znázornené, že pri úprave existujúceho záznamu, chceme aplikovať výnimku validácie unikátnej emailovej adresy pre upravovaný záznam.
+
 ```php
 public function fields($row)
 {
@@ -49,7 +50,7 @@ public function fields($row)
 ---
 
 ## 2. Základné parametre
-Medzi základné parametre patria najbanalnejšie konfigurácie Admin Modelu ako názov, popis a ostatné bežné nastavenia.
+Medzi základnú konfiguráciu Admin Modelu patria parametre ako názov, popis a ostatné bežné nastavenia.
 
 #### Dátum vytvorenia Admin Modelu
 Jeden z povinných parametrov je `$migration_date` v ktorom je zadefinovaný dátum a čas vytvorenia modelu. Pomocou tohto dátumu
@@ -90,7 +91,7 @@ protected $title = 'Upravte zoznam článkov v sekcii blog.';
 ---
 
 #### Skupina modulov v administrácii
-Sekciu v administrácii je možné priradiť do podskupiny, ktorú je možné definovať pri [konfigurácii systému](config.md#_2-Skupina-rozšírení).
+Admin Model v administrácii je možné priradiť do podskupiny, ktorú je možné definovať pri [konfigurácii systému](config.md#_2-Skupina-rozšírení).
 
 ```php
 protected $group = 'settings';

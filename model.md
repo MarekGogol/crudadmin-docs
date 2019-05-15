@@ -1,5 +1,5 @@
 # Prvé kroky
-V tejto sekcii je vysvetlené z čoho **Admin Model** pozostáva a ako s ním môžme ďalej pracovať.
+V tejto sekcii je vysvetlené z čoho **Admin Model** pozostáva a ako s ním môžeme ďalej pracovať.
 
 - [Čo je to Admin Model](#Čo-je-to-Admin-Model)
 - [Výhody Admin Modelu](#Výhody-Admin-Modelu)
@@ -17,9 +17,10 @@ Admin Model je klasický Laravel [Eloquent Model](https://laravel.com/docs/maste
 
 ## Výhody Admin Modelu v Laraveli
 > 1. Celá databáza a používateľske rozhranie pre administrátora bude vygenerované podľa nastavení Admin Modelu.
-> 2. Automaticky mapuje všetky relácie medzi modelmi. Čiže zaniká potreba písania metód v modeloch, ktoré definuju vzťahy medzi modelmi.
-     Od teraz stačí zavolať metódu s názvom modelu, a relácia bude automatický nabindovaná. Napríklad `$article->gallery()` alebo `$article->gallery`.
+> 2. Automaticky mapuje všetky relácie medzi modelmi. Čiže zaniká potreba písania relačných metód v modeloch, ktoré definuju vzťahy medzi modelmi.
+     Od teraz stačí zavolať metódu s názvom relačného modelu, a relácia bude automatický nabindovaná. Napríklad `$article->gallery()` alebo `$article->gallery`.
 > 3. Automaticky vypĺnia `$fillable` a `$casts` podľa zadefinovaných vstupných hodnôt
+> 4. A mnoho ďalšieho...
 
 ---
 

@@ -4,14 +4,15 @@ pravidla validácie formulárov, reláciach a nastavení gerenovania administra�
 
 - [Zápis vstupných hodnôt](#Zápis-vstupných-hodnôt)
 - [Zoznam dostupných vstupov](#Zoznam-dostupných-vstupov)
-- [Dodatočná konfigurácia vstupov](#Zoznam-dostupných-vstupov)
+- [Usporiadanie vstupov do skupín](#usporiadanie-vstupov-do-skupín)
+- [Usporiadanie vstupov do tabov](#usporiadanie-vstupov-do-tabov)
 
 !> Databáza je automatický synchronizovaná pri každej úprave vstupných hodnôt pomocou automatických migrácii
 
 <hr>
 
 ## Zápis vstupných hodnôt
-Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modeli, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
+Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modely, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
 konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
 
 Konfigurácia môže mať 2 podoby. Jedná z ních je vo formáte poľa,
@@ -162,7 +163,7 @@ Hodnoty je možné dosadzovať troma spôsobmi. Ako prvé je využitie parametru
 
 `type:select|options:Hodnota 1,Hodnota 2,Hodnota 3`
 
-**Ďalšia z možností je definovanie kľúčov a hodnôt vo vlastnosti `$options` v Admin Modeli.**
+**Ďalšia z možností je definovanie kľúčov a hodnôt vo vlastnosti `$options` v Admin Modely.**
 ```php
 protected $options = [
      'countries' => [
@@ -257,6 +258,193 @@ Pre upravu formatu dátumu, je dostupný voliteľný parameter s vlastnou hodnot
 
 <hr>
 
-## Dodatočná konfigurácia vstupov
+## Usporiadanie vstupov do skupín
 
-Pripravuje sa..
+Vstupné polia je možné usporiadavať a prerozdeľovať do skupín, vďaka čomu vieme spriehľadniť zložitejšie formuláre s väčším množstvom vstupných polí.
+
+Skupinu vytvorime vložením vstupných hodnôt do jednej metódy z triedy `Gogol\Admin\Fields\Group`, ktorá je dostupná v každom vytvorenom admin modely.
+
+!> Skupine je možné nastaviť názov, jednoduchšie orientovanie vo formulári. Názov je možné definovať dvoma spôsobmi, ako prvý je vloženim do kľúča poľa a druhý je pomocou metódy `name()`.
+
+!> Skupine je možné nastaviť taktiež ikonu pomocou metódy `icon('fa-truck')`. Zoznam dostupných ikón nájdete v dokumentácii [Font Awesome 4](https://fontawesome.com/v4.7.0/icons/)
+
+!> V prípare zložitejšiej práce so skupinou, je možné skupine definovať identifikátor skupiny pomocou metódy `id('my-id')`, na ktoré vieme aplikovať CSS štýly, poprípade vieme dynamicky upravovať vstupné polia v skupine.
+
+?> Všetky skupiny je možné donekonečná rekurzívne zanorovať.
+
+##### 1. Základna skupina so 100% šírkou
+
+V tomto príklade su znázornené taktiež 2 spôsoby definovania názvu skupiny.
+
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::fields([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ]),
+        Group::fields([
+            'a' => 'name:Pole a',
+            'b' => 'name:Pole b',
+        ])->name('Ostatné parametre')->icon('fa-cog'),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/full-grid.png)
+
+##### 2. Skupina s 50% šírkou (col-md-6)
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::half([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ]),
+        'Ostatné parametre' => Group::half([
+            'a' => 'name:Pole a',
+            'b' => 'name:Pole b',
+        ])->icon('fa-cog'),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/half-grid.png)
+
+##### 3. Skupina s 33% šírkou (col-md-4)
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::third([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ]),
+        'Ostatné parametre' => Group::third([
+            'a' => 'name:Pole a',
+            'b' => 'name:Pole b',
+        ])->icon('fa-cog'),
+        'Dodatkové parametre' => Group::third([
+            'c' => 'name:Pole c',
+            'd' => 'name:Pole d',
+        ])->icon('fa-cog'),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/third-grid.png)
+
+##### 4. Skupina s vlastnou šírkou
+
+Širku skupiny je možné taktiež definovať dynamicky pomocou metódy `width()`, a vyskladať tak vlastný grid, ktorý je rozdelený na 12 častí.
+
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::fields([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ])->width(8),
+        'Ostatné parametre' => Group::fields([
+            'a' => 'name:Pole a',
+            'b' => 'name:Pole b',
+        ])->icon('fa-cog')->width(4),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/custom-grid.png)
+
+##### 5. Skupina so vstupnými hodnotami v jednom riadku
+
+Ak potrebujete automaticky všetky vstupné hodnoty zarovnať do jedneho riadku veďla seba, k tomu slúži metóda `inline()`.
+
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::fields([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ])->inline(),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/inline-grid.png)
+
+##### 6. Rekurzívne skupiny
+
+Všetky skupiny je možné donekonečna rekurzívne zanorovať, vďaka čomu vieme vytvárať komplexné a zložite formuláre.
+
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::fields([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+            'Ostatné parametre' => Group::half([
+                'a' => 'name:Pole a',
+                'b' => 'name:Pole b',
+            ])->icon('fa-car'),
+            'Dodatkové parametre' => Group::half([
+                'c' => 'name:Pole c',
+                'd' => 'name:Pole d',
+            ])->icon('fa-cog'),
+        ]),
+        'z' => 'name:Field z|type:string',
+    ];
+}
+```
+
+![articles-fields](images/model-groups/recursive-grid.png)
+
+<hr>
+
+## Usporiadanie vstupov do tabov
+
+Vstupné polia je možné usporiadavať a prerozdeľovať do tabov, vďaka čomu vieme spriehľadniť zložitejšie formuláre s väčším množstvom vstupných polí.
+
+!> Tak isto ako skupinám, aj tabom je možné rovnakými spôsobmi nastaviť názov.
+
+!> Skupine je taktiež možné nastaviť ikonu pomocou metódy `icon('fa-truck')`. Zoznam dostupných ikón nájdete v dokumentácii [Font Awesome 4](https://fontawesome.com/v4.7.0/icons/)
+
+!> Všetky taby je možné donekonečná rekurzívne zanorovať a plné kombínovať so skupinamy.
+
+```php
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::tab([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ]),
+        'Ostatné parametre' => Group::tab([
+            'a' => 'name:Pole a',
+            'b' => 'name:Pole b',
+
+            'Moja skupina v tabe' => Group::fields([
+                'x' => 'name:Pole x|type:date',
+                'y' => 'name:Pole y|type:date',
+            ]),
+        ])->icon('fa-cog'),
+        'Dodatkové parametre' => Group::tab([
+            'c' => 'name:Pole c',
+            'd' => 'name:Pole d',
+        ])->icon('fa-car'),
+    ];
+}
+```
+
+![articles-fields](images/model-groups/tabs-grid.png)
