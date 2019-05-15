@@ -62,3 +62,23 @@ automatický navrhné všetky tieto následne vypísane kroky.
 <!-- -->
 > #### (fa-terminal) Jednoduchá inštalácia
 > Systém ponuká jednoduchu inštaláciu a vytvaranie admin modelov pomocou príkazu `php artisan`
+
+## História CrudAdminu
+
+Rozšírenie uzrelo svetlo sveta začiatkom roku **2016**. Vzniklo pri tvorbe komplexného a zložitého projektu, za účelom urýchlenia developmentu tohto projektu.
+
+Už v zárodku tvorby tohto projektu bol potencial systému natoľko vysoký, že sa jadro systému začalo vyvíjať ako oddelený projekt, ktorý  sa postupne začal používať vo viacerých projektoch.
+
+## Kto používa CrudAdmin
+
+Po niekoľkých rokoch vývoja systému, ho používa cez **stovky webových aplikácii, eshopov, informačných systémov, či mobilných aplikácii** pripajajúcich sa na API systému, ktorý obsluhuje dáta tychto aplikácii.
+
+Nachádza sa taktiež v niekoľkých **Slovenských** a **Českých firmách**, jeho rast je do budúcnosti plánovaný pre globalný trh.
+
+## CrudAdmin a testovanie
+
+CrudAdmin plné obsahuje automatizované **unit** a **integračné testy**, ktoré sa starajú a kontroluju väčšinu funkcionalit v systéme.
+
+Pred každým zverejnením novej verzie systému podliehaju jeho súčasti kontrole funkcionality na viacerých testovacích projektoch. Kontrola taktiež prebieha pomocou integračných testov, ktoré automatický spustia aplikáciu a otestuju jej správne chovanie v prehliadači.
+
+!> Všetky nové verzie systému su spätne kompatibilné.
