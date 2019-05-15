@@ -421,6 +421,8 @@ Vstupné polia je možné usporiadavať a prerozdeľovať do tabov, vďaka čomu
 
 !> Všetky taby je možné donekonečná rekurzívne zanorovať a plné kombínovať so skupinamy.
 
+##### 1. Zobrazenie tabov v kombinácii so skupinami
+
 ```php
 public function fields()
 {
@@ -448,3 +450,28 @@ public function fields()
 ```
 
 ![articles-fields](images/model-groups/tabs-grid.png)
+
+##### 2. Vytvorenie tabu z Admin Modelu
+
+K jednoduchým tabom zložených zo vstupných hodnôt vieme pridať tab, ktorý bude obsahovať kompletné rozšírenie Admin Modelu.
+> Ak váše dieťa modelu obsahuje reláciu `$belongsToModel` k modelu v ktorom definujete taby, tak v tomto prípade viete priradiť dany relačný podmodel do konkretného tabu.
+
+> Do tabu je taktiež možné priradiť model, ktorý neobsahuje žiadné relácie s daným modelom v ktorom definujete taby.
+
+```php
+use App\Author;
+
+public function fields()
+{
+    return [
+        'name' => 'name:Názov článku|type:string',
+        'Parametre' => Group::tab([
+            'updated_at' => 'name:Dátum upravenia|type:date',
+            'created_at' => 'name:Dátum vytvorenia|type:date',
+        ]),
+        'Upraviť autorov článku' => Group::tab(Author::class)
+    ];
+}
+```
+
+![articles-fields](images/model-groups/tabs-model.png)
