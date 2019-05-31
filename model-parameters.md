@@ -7,6 +7,7 @@ Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, kto
 - [Vstupné hodnoty](#_1-Vstupné-hodnoty)
 - [Základné parametre](#_2-Základné-parametre)
 - [Obmedzenia obsahu](#_3-Obmedzenia-obsahu)
+- [Doplnkové parametre](#_4-Doplnkové-parametre)
 
 !> Pri všetkých konfiguráciach parametrov, ktoré sú reprezentované vytvorením stĺpca v databáze, či zmenu už existujúceho stĺpca alebo jeho vlastnosti, je potrebne vykonať
    automatickú migráciu databázy pomocou príkazu v `php artisan admin:migrate`, ktorý automatický a inteligentne synchronizuje celú relačnú databázu.
@@ -54,7 +55,7 @@ Medzi základnú konfiguráciu Admin Modelu patria parametre ako názov, popis a
 
 #### Dátum vytvorenia Admin Modelu
 Jeden z povinných parametrov je `$migration_date` v ktorom je zadefinovaný dátum a čas vytvorenia modelu. Pomocou tohto dátumu
-bude administrácia zoradzovať rozšírenia a vyskládavať štruktúru administrácie v správnom poradi.
+bude administrácia zoradzovať rozšírenia a vyskládavať štruktúru administrácie v správnom poradí.
 
 ```php
 protected $migration_date = '2017-11-05 10:00:00';
@@ -138,7 +139,6 @@ protected $belongsToModel = [Article::class, News::class, Blog::class];
 #### Automatické generovanie url adries
 Pre automatické generovanie url adries podľa hodnoty stĺpca je možné použiť parameter `$sluggable`.
 Vhodné pre obsah, ktorý obsahuje v url adrese naformatovanú hodnotu zo stĺpca pomocou ktoréj je možné vyhľadať záznam z databázy.
-rozšírenie.
 
 ```php
 protected $sluggable = 'field-name';
@@ -262,3 +262,37 @@ protected $single = false;
 ?> Vhodné pre uloženie informácii do statických podstránok, ako je podstránka **O nás**, **Kontakt**, či úpravu konfiguráčných prvkov aplikácie, ktoré nepotrebujú viac záznamov v tabuľke...
 
 ---
+
+## 4. Doplnkové parametre
+
+Model taktiež obsahuje doplnkové parametre, ktoré sa zameriavajú na úpravy konkretných funkcionalít fungovania admin modela. Ide o nastavenia textov formulárov, nastavenia pravidiel tabuliek a ďalší zoznam podobných nastavení.
+
+Tieto parametre sa definujú v parametri `$settings`, alebo metóde `settings()`.
+
+```php
+protected $settings = [
+    'columns.colum_name' => [
+        'name' => 'XYZ',
+        'hidden' => true,
+    ],
+    ...
+];
+```
+
+#### Úprava textov vo formulári
+
+Pre úpravy textov pri vytvárani alebo úprave záznamov, je možné využiť nasledujúce nastavenia.
+
+```php
+protected $settings = [
+    'title' => [
+        'create' => 'Nový záznam',
+        'update' => 'Upravujete záznam č. :id',
+    ],
+    'buttons' => [
+        'insert' => 'Vytvoriť nový záznam',
+        'create' => 'Odoslať nový záznam',
+        'update' => 'Upraviť starý záznam',
+    ],
+];
+```
