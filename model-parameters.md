@@ -275,9 +275,12 @@ protected $settings = [
         'name' => 'XYZ',
         'hidden' => true,
     ],
+    'columns.other_column.name' => 'My column name'
     ...
 ];
 ```
+
+?> Nastavenia je možné defínovať rekurzívnym poľom, alebo kľúčmi odďelujucími zanorenie bodkou.
 
 #### Úprava textov vo formulári
 
@@ -295,4 +298,53 @@ protected $settings = [
         'update' => 'Upraviť starý záznam',
     ],
 ];
+```
+
+#### Úprava názvov a poradia stĺpcov
+
+Pre úpravy nastavení vlastnosti stĺpcov, je možné použiť nasledujúce parametre pre ich **skrývanie**, **zmenu limitu dĺžky textu**, či zmeny ich predvoleného **názvu**.
+
+```php
+protected $settings = [
+    'columns' => [
+        'field1' => [
+            'name' => 'Názov stĺpca pre pole x',
+            'limit' => 4,
+        ],
+        'field2.name' => 'Názov stĺpca pre pole y',
+        'field2.after' => 'field1',
+        'field3' => [
+            'before' => 'field1'
+        ],
+    ],
+];
+```
+
+#### Pridanie nových stĺpcov
+
+Pre pridanie nových stĺpcov, ktoré nenesú žiadnú hodnotu z existujúceho sĺpca z databázy, je možne vytvoriť nový stĺpec a priradiť mu ľubovoľnú hodnotu, poprípade ľubovoľný **HTML** kód, ktorý bude následne vykreslený.
+
+```php
+protected $settings = [
+    'columns' => [
+        'price_vat' => [
+            'name' => 'My field',
+            'after' => 'field1',
+        ],
+        'paid_status' => [
+            'name' => 'Status',
+            'encode' => false,
+        ],
+    ],
+];
+```
+
+```php
+public function setAdminAttributes($attributes = [])
+{
+    $attributes['price_vat'] = ($this->price * 1.2) . ' €';
+    $attributes['paid_status'] = $this->paid_at ? '<i class="fa fa-check green"></i>' : '<i class="fa fa-times unpaid"></i>';
+
+    return $attributes;
+}
 ```
