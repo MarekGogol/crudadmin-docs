@@ -9,11 +9,11 @@
   <link rel="stylesheet" type="text/css" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
-    h2 { border-bottom: 4px solid var(--theme-color,#42b983); padding-bottom: 15px; }
-    h2 a { text-decoration: none !important; cursor: pointer; }
-    h4 .fa { margin-right: 10px; }
-    h4 { margin-bottom: 5px; }
-    h5, h6 { margin-bottom: -7px; }
+    .markdown-section h2 { border-bottom: 4px solid var(--theme-color,#42b983); padding-bottom: 15px; }
+    .markdown-section h2 a { text-decoration: none !important; cursor: pointer; }
+    .markdown-section h4 .fa { margin-right: 10px; }
+    .markdown-section h4 { margin-bottom: 5px; }
+    .markdown-section h5, .markdown-section  h6 { margin-bottom: -7px; }
     .markdown-section h5, .markdown-section h6 { font-size: 0.9375rem; }
     .markdown-section > ul > li > ul { margin: 0; }
     .markdown-section p.tip { margin: 1em 0 2em 0 }
@@ -27,18 +27,24 @@
 </head>
 <body>
   <div id="app"></div>
-</body>
-<script>
+
+  <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
+  <script>
   window.$docsify = {
-    name: '',
-    repo: '',
+    name: 'CrudAdmin',
+    disqus: 'crudadmin-docs',
+    repo: 'https://github.com/marekgogol/crudadmin',
+    externalLinkTarget: '_blank',
     loadSidebar: true,
     subMaxLevel: 2,
-    search: 'auto',
     auto2top: true,
+    ga: 'UA-42935841-7',
+    search: {
+      depth: 5,
+    },
 
     plugins: [
-
+      EditOnGithubPlugin.create('https://github.com/marekgogol/crudadmin-docs/blob/master/', 'https://github.com/marekgogol/crudadmin-docs/blob/master/', '<img class="emoji" src="images/memo.png" alt="memo"> Edit on Github'),
       //Font awesome icons
       function(hook, vm){
         hook.beforeEach(function(content) {
@@ -46,8 +52,6 @@
             return '<i class="fa '+c.replace(/\(|\)/g, '')+'"></i>'
           })
         });
-
-        hook.after
       }
 
     ],
@@ -56,12 +60,14 @@
   if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('js/sw.js')
   }
-</script>
+  </script>
 
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-<script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
-<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/ga.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+</body>
 </html>
