@@ -45,7 +45,7 @@ automatický navrhné všetky tieto následne vypísane kroky.
 
 <!-- -->
 > #### (fa-language) Jazykové mutácie
-> Automatický vytvori jazykovú tabuľku, prepoji dane modeli s danými jazykmi a postará sa o automatické prepinanie jazykov ako na stránke administrácie, tak i na strane frontendu. V spolupráci s Gettext rozšírením, je možné spravovať preklady statických textov ako v zdrojových šablonách aplikácie, no taktiež aj v javascriptoch.
+> Automatický vytvori jazykovú tabuľku, prepoji dane modely s danými jazykmi a postará sa o automatické prepinanie jazykov ako na stránke administrácie, tak i na strane frontendu. V spolupráci s Gettext rozšírením, je možné spravovať preklady statických textov ako v zdrojových šablonách aplikácie, no taktiež aj v javascriptoch.
 
 <!-- -->
 > #### (fa-table) Výpis dát

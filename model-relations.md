@@ -5,7 +5,8 @@ Všetky systémy, od najzakladnejších CMS systémov, po robustné systémy spr
 Rozšírenie CrudAdmin plne automatizovalo všetky relácie medzi modelmi automatickým vygenerovaním rozhrania podporujúceho relácie, automatickým návrhom relačnej databázy, až po výpis a prepojenie tychto relácii v administrácii.
 
 - [Stromové vetvenie modelov](#stromové-vetvenie-modelov)
-- [Priradenie relácie v zázname](#priradenie-relácie-v-zázname)
+- [Relácie vo vstupnóm poli](#Relácie-vo-vstupnóm-poli)
+- [Nastavenia relácii vo vstupnóm poli](#Nastavenia-relácii-vo-vstupnóm-poli)
 - [Výber relačných záznamov](#výber-relačných-záznamov)
 
 <hr>
@@ -49,13 +50,13 @@ protected $belongsToModel = [Article::class, News::class, Blog::class];
 
 <hr>
 
-## Priradenie relácie v zázname
+## Relácie vo vstupnóm poli
 
-V ďalších prípadoch relácii sa vyskytuje potreba prepojenia dvoch nezavislých komponentov medzi sebou, kde sa každý model v administrácii nachádza na oddelenom mieste, bez stromového prepojenia medzi sebou.
+V ďalších prípadoch relácii sa vyskytuje potreba prepojenia dvoch nezavislých komponentov/tabuliek medzi sebou, kde sa každý model v administrácii nachádza na oddelenom mieste, bez stromového prepojenia medzi sebou.
 
-Tento druh relácii sa vykonáva pomocou vstupných polí, kde je záznam vo formulári pomocou vyrolovacieho poľa naviazaný na iný záznam v inej tabuľke. K prepojeniu služia parametre `belongsTo` a `belongsToMany`, ktoré sa postaraju o prepojenie záznamu s ďalším jedným, popripade viacerými záznamami naraz.
+Tento druh relácii sa vykonáva pomocou vstupných polí, kde je záznam vo formulári pomocou vyrolovacieho poľa naviazaný na iný záznam v inej tabuľke. K prepojeniu služia parametre `belongsTo` a `belongsToMany`, ktoré sa postarajú o prepojenie záznamu s ďalším jedným, popripade viacerými záznamami naraz.
 
-##### One to One / Many to One
+#### One to One / Many to One
 V tomto prípade je k záznamu rodičovského modelu priradený ďalší záznam, čím vznika relacia Many to one, keďže viacero rodičovských záznamov môže byť priradených k jednemu záznamu z rozdielnej tabuľky.
 
 ```php
@@ -71,7 +72,7 @@ class Article extends AdminModel
 
 ![article-authors](images/article-author.png)
 
-##### Many to many
+#### Many to many
 
 ```php
 class Article extends AdminModel
@@ -90,13 +91,78 @@ class Article extends AdminModel
 
 <hr>
 
+## Nastavenia relácii vo vstupnóm poli
+
+Relácie vo vstupných poliach poskytujú ďalšie nastavenia, vďaka ktorým je možné vytvoriť používateľské rozhranie ešte efektívnejšie, či rozsiahlejšie. Všetky tieto nastavenia sú vypísane v tejto sekcii nižšie.
+
+#### Filtrácia záznamov vo vstupnóm poli
+
+V prípade, ak potrebujete filtrovať záznamy v zozname položiek na výber, je možné použiť parameter `filterBy`, ktorý na základe hodnoty z iného vstupného poľa vyfiltruje položky v aktuálnom zozname.
+
+`filterBy:field_name,database_column_name`
+
+V tomto príklade znázornime filtráciu článkov, priradených pod autorom. Po vybere autora sa zobrazí druhé vstupné pole, už s vyfiltrovanými článkami daného autora.
+```php
+protected $fields = [
+    'author' => 'name:Autor|belongsTo:authors,username'
+    'article' => 'name:Článok autora|belongsTo:articles,name|filterBy:author'
+];
+```
+
+!> Prvý parameter atribútu `filterBy` je kľúč vstupného poľa z formulára, podľa ktorého budeme filtrovať *(author)*. Druhý parameter, je stĺpec v databáze z tabuľky, v ktorej filtrujeme záznamy *(articles)*. Ak sa názov stĺpca v Admin Modely nezhoduje s názvom stĺpcu v databáze, v tom prípade je potrebne pridať aj druhý nepovinný parameter `filterBy:author,author_id`, ktorý je v tomto prípade povinný.
+
+!> Ak je názov stĺpcu, podľa ktorého filtrujeme `author`, parameter `filterBy` inteligentné uhádne, že relačný stĺpec vo filtrovanej tabuľke sa bude volať `author_id`, preto nie je druhý parameter v tomto prípade potrebné vypĺniať.
+
+!> Pre správne fungovanie parametru `filterBy`, je nutné mať nastavene správne cudzie kľúče medzi tabúľkami. V tomto príklade tabuľka `articles` musí obsahovať stĺpec `author_id`, vďaka ktorému administrácia automaticky vyfiltruje dané záznamy.
+
+Filtrácia záznamov funguje aj podľa statické typov možnosti na výber.
+```php
+protected $fields = [
+    'color' => 'name:Farba auta|type:select|options:black,white'
+    'cars' => 'name:Model|belongsTo:cars,name|filterBy:color,color'
+];
+```
+
+!> V tomto prípade pre správne fungovanie parametru `filterBy`, je nutné mať v tabuľke `cars` stĺpec s názvom `color`, podľa ktorého budeme filtrovať farbu auta.
+
+#### Predvyplnianie hodnôt z relačného vstupného poľa
+
+Parameter `fillBy` slúžy k predvypĺneniu statickej hodnoty vo formulári z vybraného relačného záznamu.
+
+`fillBy:field_name,database_column_name`
+
+V nasledujúcom príklade, predvypĺnime meno a vek autora, po vybraní záznamu vo vstupnóm poli `author`.
+```php
+protected $fields = [
+    'author' => 'name:Autor|belongsTo:authors,username'
+    'username' => 'name:Meno autora|type:string|fillBy:author.username'
+    'age' => 'name:Vek autora|type:integer|fillBy:author.age'
+];
+```
+
+#### Prepojenie vstupného poľa s rozhraním pre pridavanie nových záznamov
+
+V oboch typoch **belongsTo** a **belongsToMany** vo vstupných poliach je možné povoliť pridávanie záznamov do danej relačnéj tabuľky priamo zo vstupného poľa. Túto funkcionalitu je možné povoliť pomocou parametru `canAdd`.
+
+```php
+protected $fields = [
+    'authors' => 'name:Autor|belongsToMany:authors,name|canAdd'
+];
+```
+
+![model-relations-field-canAdd](images/fields/model-relations-field-canAdd.png)
+
+!> Po kliku na ikonu pridania nového záznamu, sa otvori modálne okno s pridaním nového relačného záznamu.
+
+<hr>
+
 ## Výber relačných záznamov
 
-Framework Laravel k výberu relačných záznamov potrebuje v modeli zadefinovať metódy, ktoré definujú [vzťahy medzi ďalšími modelmi](https://laravel.com/docs/master/eloquent-relationships#defining-relationships).
+Framework Laravel k výberu relačných záznamov potrebuje v modely zadefinovať metódy, ktoré definujú [vzťahy medzi ďalšími modelmi](https://laravel.com/docs/master/eloquent-relationships#defining-relationships).
 
-Systém CrudAdmin túto potrebú plné automatizoval tým, že mapuje modeli medzi sebou na základe vstupných hodnôt, či stromového vetvenia modulov. Samozrejme v prípade potreby možnosť definovania vlastných relácii v modeli ostala.
+Systém CrudAdmin túto potrebú plné automatizoval tým, že mapuje modely medzi sebou na základe vstupných hodnôt, či stromového vetvenia modulov. Samozrejme v prípade potreby možnosť definovania vlastných relácii v modely ostala.
 
-### Príklad výberu relácie umiestneného v stromovej štruktúre
+### Príklad výberu relácie umiestnenej v stromovej štruktúre
 V tomto príklade je znazornená stromova štuktúra relácie, kde budeme pracovať s Objednávkou, ktorá obsahuje viacero objednaných položiek.
 
 ##### Modul objednávky, obsahujúci zoznam objednaných produktov.

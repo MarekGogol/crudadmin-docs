@@ -10,7 +10,7 @@ Systém CrudAdmin plne automatizoval nahrávanie súborov a obrázkov do adminis
 
 ## Nahravanie súboru, obrázku
 
-Pre jednoduché nahravanie súborov stačí v modeli zadefinovať vstup súboru.
+Pre jednoduché nahravanie súborov stačí v modely zadefinovať vstup súboru.
 
 ```php
 protected $fields = [

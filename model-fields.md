@@ -1,27 +1,27 @@
-# Zoznam vstupných hodnôt
-Základna konfigurácia Admin Modelu pozostáva zo vstupných hodnôt, ktoré reprezentujú informácie o všetkých stĺpcoch v databáze,
+# Vstupné polia
+Základna konfigurácia Admin Modelu pozostáva zo vstupných polí, ktoré reprezentujú informácie o všetkých stĺpcoch v databáze,
 pravidla validácie formulárov, reláciach a nastavení gerenovania administračného rozhrania od formulárov, až po tabuľky výpisu.
 
-- [Zápis vstupných hodnôt](#Zápis-vstupných-hodnôt)
-- [Zoznam dostupných vstupov](#Zoznam-dostupných-vstupov)
+- [Zápis vstupných polí](#Zápis-vstupných-polí)
+- [Zoznam vstupných polí](#Zoznam-vstupných-polí)
+- [Parametre vstupných polí](#Parametre-vstupných-polí)
 - [Usporiadanie vstupov do skupín](#usporiadanie-vstupov-do-skupín)
 - [Usporiadanie vstupov do tabov](#usporiadanie-vstupov-do-tabov)
 
-!> Databáza je automatický synchronizovaná pri každej úprave vstupných hodnôt pomocou automatických migrácii
+!> Databáza je automatický synchronizovaná pri každej úprave vstupných polí, pomocou automatických migrácii s príkazom `php artisan admin:migrate`
 
 <hr>
 
-## Zápis vstupných hodnôt
-Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modely, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje
-konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
+## Zápis vstupných polí
+Skladá sa z viac rozmerného poľa definovaným vlastnosťou `fields`, ktorá je uložená v Admin Modely, kde každý kľúč v poli označuje názov stĺpca v databáze a hodnota reprezentuje konfiguráciu vstupného parametru v spojení s pravidlami [Laravel validácie](https://laravel.com/docs/master/validation#rule-unique).
 
 Konfigurácia môže mať 2 podoby. Jedná z ních je vo formáte poľa,
 druhá vo forme reťazcu parametrov oddelených znakom `|`. Nižšie sú znázornene tieto 2 príklady.
-Prve 2 položky `name` a `content` označujú vstupné hodnoty pre
-názov a obsah. Tretí parameter image je vstup pre nahranie obrázku.
+Prvé 2 položky `name` a `content` označujú vstupné polia pre
+názov a obsah. Tretí parameter image je vstup pre nahránie obrázku.
 
 ##### Zápis v podobe stringu
-Tento zápis sa odporúča pre všetky formy písania vstupných hodnôt.
+Tento zápis sa odporúča pre všetky formy písania vstupných polí.
 
 ```php
 protected $fields = [
@@ -32,7 +32,7 @@ protected $fields = [
 ```
 
 ##### Rovnaký zápis v podobe poľa
-Nodporúčaný zápis, z dôsledku veľkého množstvá riadkov v súbore pri modeloch, ktoré obsahujú desiatký vstupných hodnôt. Odporúčana forma zápisu vstupných hodnôt je kombinovanie oboch zápísov, kde v niektorých prípadoch je nutné použiť pravidlá pre validáciu záznamov vo forme [Rules z laravelu](https://laravel.com/docs/5.7/validation#custom-validation-rules).
+Nodporúčaný zápis, z dôsledku veľkého množstvá riadkov v súbore pri modeloch, ktoré obsahujú desiatký vstupných polí.
 
 ```php
 protected $fields = [
@@ -62,8 +62,9 @@ protected $fields = [
 
 ##### Komplexný zápis vstupných hodnôt vo forme metódy
 
-V niektorých prípadoch je potrebné validáciu rozlíšiť pri vytvárani nového záznamu a úprave už existujúceho,
-v tomto prípade parameter `$row` bude pri editácii obsahovať editovaný záznam z databázy.
+V niektorých prípadoch je potrebné validáciu podmienkovo rozlíšiť pri vytvárani nového záznamu a taktiež pri úprave už existujúceho záznamu, v tomto prípade parameter `$row` bude pri editácii obsahovať editovaný záznam z databázy.
+
+Tento zápis textovej podoby vstupných polí s kombináciou poľa je odporúčana forma zápisu vstupných polí, v prípadoch ak je nutné použiť komplexnejšie pravidlá pre validáciu záznamov vo formulári pomocou [rules z laravelu](https://laravel.com/docs/master/validation#custom-validation-rules).
 
 ```php
 use Illuminate\Validation\Rule;
@@ -87,7 +88,7 @@ public function fields($row)
 
 <hr>
 
-## Zoznam dostupných vstupov
+## Zoznam vstupných polí
 
 <!-- -->
 #### (fa-font) Textový vstup
@@ -159,7 +160,7 @@ Výber z viacerých hodnôt zo zoznamu.
 
 **Dosadzovanie hodnôt do zoznamu**
 
-Hodnoty je možné dosadzovať troma spôsobmi. Ako prvé je využitie parametru `options` hneď v parametri daného vstupného poľa, kde ako vlastnosť parametru budú reprezentované hodnoty v zozname, predelené čiarkou.
+Hodnoty je možné dosadzovať troma spôsobmi. Ako prvé je využitie parametru `options` hneď v konfigurácii daného vstupného poľa, kde ako hodnota parametru budú reprezentované položky v zozname, predelené čiarkou.
 
 `type:select|options:Hodnota 1,Hodnota 2,Hodnota 3`
 
@@ -206,7 +207,7 @@ Pre dosadzovanie hodnôt v zozname typu radio, sa využíva rovnaký postup ako 
 
 <!-- -->
 #### (fa-database) Relácie
-Podpora načítania hodnôt do selectu alebo multiselectu z existujúcich záznamov v ľubovoľenj tabuľke v databáze.
+Podpora načítania hodnôt do selectu alebo multiselectu z existujúcich záznamov v ľubovoľnej tabuľke z databázy.
 
 Ako prvá hodnota parametru je reprezentovaný názov tabuľky v databáze, druhá hodnota reprezentuje názov stĺpca, z ktorého budú dáta v zozname vypísane používateľovi.
 
@@ -218,11 +219,27 @@ Ako prvá hodnota parametru je reprezentovaný názov tabuľky v databáze, druh
 
 `belongsToMany:users,name`
 
-Pre kombináciu stĺpcov vo výpise s vlastným textom je možné použiť dosadzovanie stĺpcov pomocou dvojbodky a názvu stĺpca v databáze v kombinácii spolu s vlastným textovým formátom.
+**Kombinácia stĺpcov vo výpise zoznamu**
+
+Pre kombináciu stĺpcov v zozname s výpisom, je možné použiť dosadzovanie stĺpcov pomocou dvojbodky a názvu stĺpca v databáze v kombinácii s vlastným textovým formátom.
 
 `belongsTo:users,:firstname :lastname - Vek :age`
 
-!> Viac o reláciach nájdete v sekcii [Databázové relácie](model-relations.md#databázové-relácie)
+**Prepojenie relačného vstupu s rozhránim pre správu relačných záznamov**
+
+V prípade, ak chcete vstupné pole prepojiť s rozhraním pre pridávanie nových položiek do zoznamu. Môžete použiť parameter `canAdd`, ktorý povolí dynamické vkladanie záznamov priamo z daného vstupného poľa.
+
+`belongsTo:users,:username|canAdd`
+
+![model-relations-field-canAdd](images/fields/model-relations-field-canAdd.png)
+
+**Filtrácia záznamov vo vstupnóm poli**
+
+V prípade, ak potrebujete filtrovať záznamy v zozname položiek na výber, je možné použiť parameter `filterBy`, ktorý na základe hodnoty z iného vstupného poľa vyfiltruje položky v aktuálnom zozname.
+
+`filterBy:field_name,row_column`
+
+!> Všetko o týchto reláciach a ich ďalších nastaveniach nájdete v sekcii [Databázové relácie](model-relations.md#priradenie-relácie-vo-vstupnóm-poli)
 
 <hr>
 
@@ -232,7 +249,9 @@ Možnost pridania vstupu vo forme nahrávania súboru, či obrazkú s automatick
 
 `type:file`
 
-Pre upload viacero súborov zároveň je dostupný parameter `multiple`.
+!> Pre upload viacero súborov zároveň do jedného vstupného poľa je dostupný parameter `multiple`.
+
+!> V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť parameter `multirows`. Tento parameter po odoslaní formuláru s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
 
 <hr>
 
@@ -252,9 +271,159 @@ Pre format dátumu a času zároveň:
 
 `type:datetime`
 
-Pre výber viacero dátumov naraz, je dostupný voliteľný parameter `multiple`.
+Pre výber viacero dátumov, alebo časov naraz, je dostupný voliteľný parameter `multiple`.
 
 Pre upravu formatu dátumu, je dostupný voliteľný parameter s vlastnou hodnotou `format:d.m.Y`.
+
+<hr>
+
+## Parametre vstupných polí
+
+Všetky vstupné polia taktiež zahrňujú dodatočnú konfiguráciu, ktorá je dostupná pomocou doplnkových globalných atribútov. Medzi základne parametre vstupných polí patri konfigurácia [laravel validácie](https://laravel.com/docs/master/validation#available-validation-rules), ktorú je možné skombinovať so všetkými vstupnými poliami.
+
+V nasledujúcom zozname nájdete všetky dostupné parametre, ktoré CrudAdmin poskytuje pri vytvrárani vstupných polí.
+
+### Parametre pre formuláre
+
+##### Názov vstupného poľa `(Povinné)`
+`name:Názov článku`
+
+##### Typ vstupného poľa `(Povinné)`
+`type:string`
+
+##### Popis vstupného poľa
+Popis vstupného poľa je znázornený malým textom pod daným vstupom.
+
+`title:Zadajte tel. číslo v tvare +421 xxx xxx xxx`
+
+##### Placeholder vstupného poľa
+Placeholder je umiestnený v danóm vstupnóm poli pri prázdnej hodnote.
+
+`placeholder:Zadajte tel. číslo v tvare +421 xxx xxx xxx`
+
+##### Deaktivovanie vstupného poľa vo formulári
+`disabled`
+
+##### Predvolená hodnota vstupného poľa
+`default:10`
+
+V prípade, ak ide o vnorený model, je možné použiť predvolenú hodnotu rodičovského záznamu.
+
+`default:$parent.name` alebo `default:table_name.name`
+
+##### Odstránenie vstupného poľa z formuláru
+Pole bude úplne vynechané, tým pádom sa nebude nachádzať ani jeho hodnota v odoslanom requeste.
+
+`removeFromForm`
+
+##### Skrytie vstupného poľa z formuláru
+Pole bude dostupné vo formulári a taktiež v danóm odoslanom requeste, no bude neviditeľné pre používateľa.
+
+`hideFromForm`
+
+##### Skrytie vstupného poľa z formuláru len pri vytvárani záznamu
+`hideOnCreate`
+
+##### Skrytie vstupného poľa z formuláru len pri úprave záznamu
+`hideOnUpdate`
+
+##### Vlastná VueJS komponenta vstupného poľa
+`component:MyComponentName`
+
+!> Viac o vlastných komponentách vstupných polí nájdete v odseku [Vlastné vstupné polia](model-relations.md#Vlastné-vstupné-polia)
+
+##### Nahravanie súborov ako samostatný záznam v databáze
+V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť nasledujúci parameter. Tento parameter po odoslaní formuláru s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
+
+`multirows`
+
+##### Relácia One to One
+`belongsTo:users,username`
+
+!> Viac o týchto reláciach nájdete v sekcii [Databázové relácie](model-relations.md#priradenie-relácie-vo-vstupnóm-poli)
+
+##### Relácia Many to Many
+`belongsToMany:users,username`
+
+!> Viac o týchto reláciach nájdete v sekcii [Databázové relácie](model-relations.md#priradenie-relácie-vo-vstupnóm-poli)
+
+##### Povolenie vkládania nových záznamov vo vstupných poli typu relácie
+`canAdd`
+
+!> Viac o tomto nastavení nájdete v sekcii [Databázové relácie](model-relations.md#prepojenie-vstupného-poľa-s-rozhraním-pre-pridavanie-nových-záznamov)
+
+##### Možnosti pre vstupné pole typu select a radio
+`options:Apple,Banana,Strawberry`
+
+##### Podpora viacnasobného zvolenia hodnoty vo vstúpnom polí
+Atribút podporuje vstupné polia typu `select`, `file`, `date`, `time`.
+
+`multiple`
+
+##### Filtrácia možnosti na základe iného vstupného poľa
+Atribút podporuje vstupné polia typu `select`, `belongsTo` alebo `belongsToMany`.
+
+`filterBy:field_name,database_column_name`
+
+!> Viac o filtrácii sa dozviete v sekcii [Nastavenia relácii vo vstupnóm poli](model-relations.md#Nastavenia-relácii-vo-vstupnóm-poli)
+
+##### Predvyplnenie poľa na základe hodnoty z relácie ineho poľa
+`fillBy:field_name,database_column_name`
+
+!> Viac o predvyplniani hodnôt sa dozviete v sekcii [Databázove relácie](model-relations.md#predvyplnianie-hodnôt-z-relačného-vstupného-poľa)
+
+### Parametre pre tabuľku s výpisom záznamov
+
+##### Skývanie hodnoty z tabuľky s výpisom záznamov
+`hidden`
+
+##### Skrývanie vstupného poľa v tabuľke s výpisom záznamov a taktiež vo formulári
+Úplne zneviditeľnenie vstupného poľa a stĺpca.
+
+`invisible`
+
+##### Nastavenie limitu znakov v tabuľke s výpisom dát
+`limit:50`
+
+##### Nastavenie predvoleného zoradenie záznamov podľa daného stĺpca
+`orderBy:asc` / `orderBy:desc`
+
+##### Klikateľne tel. číslo
+Stĺpec v tabuľke výpisu záznamov bude obsahovať klikateľný odkaz s presmerovaním na akciu telefonátu.
+
+`phone_link`
+
+##### Vlastny názov stĺpca vo výpise záznamov
+V prípade ak sa názov stĺpca vo formulári nezhoduje s názvom stĺpca v tabuľke záznamov.
+
+`column_name:My other column title`
+
+### Databázove nastavenia stĺpcov
+
+##### SQL atríbút pre uníkatne záznamy
+`unique_db`
+
+##### SQL atríbút pre indexovanie stĺpca
+`index`
+
+##### SQL atríbút pre kladne čísla
+`unsigned`
+
+##### Imaginarné vstupné pole
+Ide o vstupné pole vo formulári, ktoré nebude mať žiaden dopad ani prepojenie na databázu. Využíva sa v prípade pomocného vstupného poľa, či vlastnej komponenty, ktorá nevyžaduje ukládať žiadné hodnoty do databázy.
+
+`imaginary`
+
+### Ostatné parametre
+
+##### Aplikovanie parametrov len v administrácii
+`inAdmin:required` / `inBackend:required`
+
+##### Aplikovanie parametrov len vo frontende
+`inFrontend:required`
+
+##### Aplikovanie parametrov len vo konzole
+`inConsole:required`
 
 <hr>
 
