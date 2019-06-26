@@ -5,6 +5,7 @@ pravidla validácie formulárov, reláciach a nastavení gerenovania administra�
 - [Zápis vstupných polí](#Zápis-vstupných-polí)
 - [Zoznam vstupných polí](#Zoznam-vstupných-polí)
 - [Parametre vstupných polí](#Parametre-vstupných-polí)
+- [Vlastné vstupné polia](#vlastné-vstupné-polia)
 - [Usporiadanie vstupov do skupín](#usporiadanie-vstupov-do-skupín)
 - [Usporiadanie vstupov do tabov](#usporiadanie-vstupov-do-tabov)
 
@@ -330,7 +331,7 @@ Pole bude dostupné vo formulári a taktiež v danóm odoslanom requeste, no bud
 ##### Vlastná VueJS komponenta vstupného poľa
 `component:MyComponentName`
 
-!> Viac o vlastných komponentách vstupných polí nájdete v odseku [Vlastné vstupné polia](model-relations.md#Vlastné-vstupné-polia)
+!> Viac o vlastných komponentách vstupných polí nájdete v odseku [Vlastné vstupné polia](model-fields.md#vlastné-vstupné-polia)
 
 ##### Nahravanie súborov ako samostatný záznam v databáze
 V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť nasledujúci parameter. Tento parameter po odoslaní formuláru s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
@@ -424,6 +425,77 @@ Ide o vstupné pole vo formulári, ktoré nebude mať žiaden dopad ani prepojen
 
 ##### Aplikovanie parametrov len vo konzole
 `inConsole:required`
+
+<hr>
+
+## Vlastné vstupné polia
+
+V niektorých prípadoch potrebujete vytvoriť vlastné vstupné polia. S touto situáciou nemá CrudAdmin žiaden problém ani obmedzenie, a plne poskytuje funkcionalitu vytvorenia vlastného poľa na mieru, ktoré je reaktívne a kuztomitovateľné podľa požiadavok programátora.
+
+Vytváranie poľa pozostáva z dvoch jednoduchých krokov. Ako prvé je potrebné vytvoriť vlastnú **VueJS** komponentu pomocou `artisan` príkazu
+
+```
+php artisan admin:component MyCustomField
+```
+
+Následne sa vytvori súbor komponenty **resources/views/admin/components/MyCustomField.vue** ktorý pozostáva konfiguráciou vašej komponenty. Predvolená komponenta obsahuje funkčnú šablónu vstupného poľa, ktorú môžete pomocou VueJS plne kustomizovať.
+
+Následne je potrebné komponentu priradiť vstupnému poľu, kde si prajete vygenerovanú komponentu aplikovať. Vstupné pole vytvorite klasickým spôsobom, s požadovaným typom daného poľa. A následne jej priradite parameter `component:MyCustomField`, ktorý bude automatický načítany z globálnej zložky komponent.
+
+```php
+protected $fields = [
+    'my_custom_field' => 'name:Moje pole|type:string|component:MyCustomField|required'
+];
+```
+
+Komponenta sa skladá z klasickej štruktúry písania **VueJs** komponent. Obsahuje jeden blok v `<template>` elemente, ktorý zahŕňa HTML kód komponenty. Následne v druhej časti komponenta pozostáva z **JavaScript** logiky správania a generovania komponenty, ktorá je uložena v  `<script>` elemente. CrudAdmin následne tieto dva elementy naparsuje, a vyrenderuje bez potreby kompilovania kódu.
+
+```html
+<template>
+    <div class="form-group">
+        <label>{{ field.name }}</label>
+
+        <input
+            type="text"
+            placeholder="Wohoo,,, this is my first custom component field!!"
+            class="form-control"
+            :name="field_key"
+            :value="value"
+            @keyup="onChange">
+
+        <button type="button" class="btn btn-primary" @click="hideMyField">Hide my field</button>
+    </div>
+</template>
+
+<script type="text/javascript">
+export default {
+    props : [ 'field_key', 'field', 'row' ],
+
+    mounted(){
+        console.log('my wohooo component is mounted!');
+    },
+
+    computed : {
+        //Get input value
+        value(){
+            return this.field.value || this.field.default;
+        },
+    },
+
+    methods : {
+        //Update input value
+        onChange(e){
+            this.field.value = e.target.value;
+        },
+        hideMyField(){
+            this.$set(this.field, 'hideFromForm', true);
+        },
+    }
+}
+</script>
+```
+
+!> VueJS komponenty netreba žiadným spôsobom kompilovať. CrudAdmin načíta automaticky VueJS komponenty, a vyrenderuje ich.
 
 <hr>
 
