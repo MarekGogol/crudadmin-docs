@@ -4,6 +4,7 @@
     - [Inštalácia](install.md)
     - [Konfigurácia](config.md)
     - [Licencia](license.md)
+    - [Kontakt](contact.md)
 
 - Admin model
     - [Prvé kroky](model.md)
