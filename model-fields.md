@@ -252,7 +252,7 @@ Možnost pridania vstupu vo forme nahrávania súboru, či obrazkú s automatick
 
 !> Pre upload viacero súborov zároveň do jedného vstupného poľa je dostupný parameter `multiple`.
 
-!> V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť parameter `multirows`. Tento parameter po odoslaní formuláru s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
+!> V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť parameter `multirows`. Tento parameter po odoslaní formulára s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
 
 <hr>
 
@@ -312,20 +312,20 @@ V prípade, ak ide o vnorený model, je možné použiť predvolenú hodnotu rod
 
 `default:$parent.name` alebo `default:table_name.name`
 
-##### Odstránenie vstupného poľa z formuláru
+##### Odstránenie vstupného poľa z formulára
 Pole bude úplne vynechané, tým pádom sa nebude nachádzať ani jeho hodnota v odoslanom requeste.
 
 `removeFromForm`
 
-##### Skrytie vstupného poľa z formuláru
+##### Skrytie vstupného poľa z formulára
 Pole bude dostupné vo formulári a taktiež v danóm odoslanom requeste, no bude neviditeľné pre používateľa.
 
 `hideFromForm`
 
-##### Skrytie vstupného poľa z formuláru len pri vytvárani záznamu
+##### Skrytie vstupného poľa z formulára len pri vytvárani záznamu
 `hideOnCreate`
 
-##### Skrytie vstupného poľa z formuláru len pri úprave záznamu
+##### Skrytie vstupného poľa z formulára len pri úprave záznamu
 `hideOnUpdate`
 
 ##### Vlastná VueJS komponenta vstupného poľa
@@ -334,7 +334,7 @@ Pole bude dostupné vo formulári a taktiež v danóm odoslanom requeste, no bud
 !> Viac o vlastných komponentách vstupných polí nájdete v odseku [Vlastné vstupné polia](model-fields.md#vlastné-vstupné-polia)
 
 ##### Nahravanie súborov ako samostatný záznam v databáze
-V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť nasledujúci parameter. Tento parameter po odoslaní formuláru s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
+V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súborov, či obrázkov, je možné využiť nasledujúci parameter. Tento parameter po odoslaní formulára s viacerými súbormi, vytvori rozdielne záznamy pre každý z nahraných súborov.
 
 `multirows`
 
