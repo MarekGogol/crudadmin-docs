@@ -504,6 +504,8 @@ export default {
 
 !> VueJS komponenty netreba žiadným spôsobom kompilovať. CrudAdmin načíta automaticky VueJS komponenty, a vyrenderuje ich.
 
+!> Všetky komponenty sa rekurzívne automatický načitávaju z priečinka `resources/views/admin/components`. Tento priečinok je možné nastaviť v [konfigurácii administrácie](config.md#_7-priečinok-načitávania-vuejs-komponent).
+
 <hr>
 
 ## Usporiadanie vstupov do skupín

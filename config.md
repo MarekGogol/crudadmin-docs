@@ -102,4 +102,12 @@ V prípade potreby otestovania prihlásenia aj pod účtom, ku ktorému neviete 
 ],
 ```
 
+##### 7. Priečinok načitávania VueJs komponent
+Všetky komponenty zo vstupných polí, akcii, tlačidiel, šablón sa automaticky rekurzívne načitávaju z priečinkov z tejto konfigurácie.
+```php
+'components' => [
+    'resources/views/admin/components',
+],
+```
+
 > Pre fungovanie super hesla je potrebné vytvoriť `hash` pomocou funkcie `bcrypt()`, aby v prípade kompromitácie aplikácie nebolo dané heslo zneužité.

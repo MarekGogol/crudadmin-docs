@@ -11,6 +11,7 @@
     - [Admin Model](model-parameters.md)
     - [Vstupné polia](model-fields.md)
     - [Vlastné akcie a tlačidla](model-actions.md)
+    - [Snipety šablón](model-layouts.md)
     - [Databázové relácie](model-relations.md)
     - [Jazykové mutácie](languages.md)
 

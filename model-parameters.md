@@ -348,3 +348,27 @@ public function setAdminAttributes($attributes = [])
     return $attributes;
 }
 ```
+
+#### Pridanie vlastných tlačidiel do postranného panela
+
+Tlačidla do postraného panela záznamov, kde sa nachádzaju tlačidla s vymazaním záznamu, publikácie, je možné dodatočné pridať pomocou vlastnosti `$buttons`.
+
+```php
+protected $buttons = [
+    App\Admin\Buttons\MyButton::class
+];
+```
+
+!> Kompletny návod ako tieto tlačidla nastaviť, nájdete v sekcii [Vlastné akcie a tlačidla](model-actions.md).
+
+#### Pridanie vlastnej šablóny do rozhrania administrácie
+
+Rozhranie administrácie je možné dpĺniať a ďalej kustomizovať, pomocou doplnkových snipetov, ktoré rozširujú funkcionalitu existujúcich admin komponent.
+
+```php
+protected $layouts = [
+    App\Admin\Layouts\MyFormLayout::class
+];
+```
+
+!> Kompletny návod ako tieto šablóny nastaviť, nájdete v sekcii [Snipety šablón](model-layouts.md).

@@ -172,7 +172,7 @@ return $this->title('This is your stats result')
 
 !> Komponentu je potrebné vytvoriť pomocou príkazu `php artisan admin:component MyComponentName`. Typ komponenty je potrebné vybrať `button`.
 
-!> Všetky komponenty sa rekurzívne automatický načitávaju z priečinka `resources/views/admin/components`. V prípade inej lokácie komponenty je možné použiť absolútnu cestu k súboru.
+!> Všetky komponenty sa rekurzívne automatický načitávaju z priečinka `resources/views/admin/components`. Tento priečinok je možné nastaviť v [konfigurácii administrácie](config.md#_7-priečinok-načitávania-vuejs-komponent). V prípade inej lokácie komponenty je možné použiť absolútnu cestu k súboru.
 
 !> V prípade väčšieho množstva komponent odporúčame využívať podpriečinky v priečinku `components`. Komponentu z podpriečinku zavoláte buď jej názvom, alebo relatívnou cestou s názvom komponenty. `component('subdirectory/MyComponentName.vue')`;
 
