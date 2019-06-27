@@ -445,7 +445,7 @@ Vytváranie poľa pozostáva z dvoch jednoduchých krokov. Ako prvé je potrebn�
 php artisan admin:component MyCustomField
 ```
 
-Následne sa vytvori súbor komponenty **resources/views/admin/components/MyCustomField.vue** ktorý pozostáva konfiguráciou vašej komponenty. Predvolená komponenta obsahuje funkčnú šablónu vstupného poľa, ktorú môžete pomocou VueJS plne kustomizovať.
+Následne sa vytvori súbor komponenty **resources/views/admin/components/fields/MyCustomField.vue** ktorý pozostáva konfiguráciou vašej komponenty. Predvolená komponenta obsahuje funkčnú šablónu vstupného poľa, ktorú môžete pomocou VueJS plne kustomizovať.
 
 Následne je potrebné komponentu priradiť vstupnému poľu, kde si prajete vygenerovanú komponentu aplikovať. Vstupné pole vytvorite klasickým spôsobom, s požadovaným typom daného poľa. A následne jej priradite parameter `component:MyCustomField`, ktorý bude automatický načítany z globálnej zložky komponent.
 

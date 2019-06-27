@@ -16,11 +16,10 @@ Admin Model je klasický Laravel [Eloquent Model](https://laravel.com/docs/maste
 ---
 
 ## Výhody Admin Modelu v Laraveli
-> 1. Celá databáza a používateľske rozhranie pre administrátora bude vygenerované podľa nastavení Admin Modelu.
-> 2. Automaticky mapuje všetky relácie medzi modelmi. Čiže zaniká potreba písania relačných metód v modeloch, ktoré definuju vzťahy medzi modelmi.
-     Od teraz stačí zavolať metódu s názvom relačného modelu, a relácia bude automatický nabindovaná. Napríklad `$article->gallery()` alebo `$article->gallery`.
-> 3. Automaticky vypĺnia `$fillable` a `$casts` podľa zadefinovaných vstupných hodnôt
-> 4. A mnoho ďalšieho...
+1. Celá databáza a používateľske rozhranie pre administrátora bude vygenerované podľa nastavení Admin Modelu.
+2. Automaticky mapuje všetky relácie medzi modelmi. Čiže zaniká potreba písania relačných metód v modeloch, ktoré definuju vzťahy medzi modelmi. Od teraz stačí zavolať metódu s názvom relačného modelu, a relácia bude automatický nabindovaná. Napríklad `$article->gallery()` alebo `$article->gallery`.
+3. Automaticky vypĺnia `$fillable` a `$casts` podľa zadefinovaných vstupných hodnôt
+4. A mnoho ďalšieho...
 
 ---
 

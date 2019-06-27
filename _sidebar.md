@@ -10,6 +10,7 @@
     - [Prvé kroky](model.md)
     - [Konfigurácia](model-parameters.md)
     - [Vstupné polia](model-fields.md)
+    - [Vlastné akcie a tlačidla](model-actions.md)
     - [Databázové relácie](model-relations.md)
     - [Jazykové mutácie](languages.md)
 

@@ -46,7 +46,7 @@ public function fields($row)
 !> Pri akej koľvek zmene v týchto nastaveniach, ktoré súvisia s nastavením databázy je potrebne vykonať automatickú migráciu
    pomocou príkazu `php artisan admin:migrate`, ktorá inteligentne a automatický synchronizuje celú databázu.
 
-?> Kompletné informácie o nastavení vstupných hodnôt nájdete v sekcii [zoznam vstupných hodnôt](model-fields.md).
+?> Kompletné informácie o nastavení vstupných hodnôt nájdete v sekcii [zoznam vstupných hodnôt](model-fields.md#zoznam-vstupných-polí).
 
 ---
 
@@ -109,9 +109,9 @@ Povolenie unikatného prekladu obsahu pre každú jazykovú mutáciu na web str�
 protected $localization = true;
 ```
 
-!> V administrácii budú ku každému jazyku priradené unikátne záznamy.
+!> V administrácii budú ku každému rozšíreniu priradené unikátne záznamy každej jazykovej mutácie.
 
-!> V tabuľke sa automatický vytvorí cudzí kľúč medzi tabuľkou `languages`, ktorá obsahuje zoznam dostupných jazykov.
+!> V tabuľke rozšírenia sa automatický vytvorí cudzí kľúč medzi tabuľkou `languages`, ktorá obsahuje zoznam dostupných jazykov.
 
 ?> Viac o preklade záznamov a textu nájdete v sekcii [jazykové mutácie](languages.md#Jazykové-mutácie).
 
