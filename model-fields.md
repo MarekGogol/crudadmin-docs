@@ -338,6 +338,13 @@ V prípade, ak model obsahuje iba jedno vstupné pole s typom nahrávania súbor
 
 `multirows`
 
+##### Viac jazyčné vstupné pole
+Viac jazyčné vstupné pole je možné povoliť pomocou parametru locale, ktorý automatický prepne typ poľa na **JSON**, v ktorom budú reprezentované hodnoty jazykových mutácii daného poľa.
+
+`locale`
+
+!> Viac o týchto jazykových mutáciach sa dozviete v sekci [Zkrkadlenie obsahu](languages.md#_2-zrkadlenie-obsahu-preklad-konkretných-stĺpcov)
+
 ##### Relácia One to One
 `belongsTo:users,username`
 
