@@ -6,9 +6,9 @@
     - [Licencia](license.md)
     - [Kontakt](contact.md)
 
-- Admin model
+- Admin rozhranie
     - [Prvé kroky](model.md)
-    - [Konfigurácia](model-parameters.md)
+    - [Admin Model](model-parameters.md)
     - [Vstupné polia](model-fields.md)
     - [Vlastné akcie a tlačidla](model-actions.md)
     - [Databázové relácie](model-relations.md)

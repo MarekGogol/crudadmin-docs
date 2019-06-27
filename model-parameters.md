@@ -1,10 +1,10 @@
-# Konfigurácia
+# Admin Modelu
 
 ## Parametre a nastavenia
 Každý Admin Model pozostáva z parametrov, ktoré definujú správanie generovania sa komponentov v administrácii.
 Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, ktoré môže programátor upraviť, vymazať alebo doplniť.
 
-- [Vstupné hodnoty](#_1-Vstupné-hodnoty)
+- [Vstupné polia](#_1-Vstupné-polia)
 - [Základné parametre](#_2-Základné-parametre)
 - [Obmedzenia obsahu](#_3-Obmedzenia-obsahu)
 - [Doplnkové parametre](#_4-Doplnkové-parametre)
@@ -14,10 +14,10 @@ Admin Model po vytvorení obsahuje základné najpoužívanejšie parametre, kto
 
 ---
 
-## 1. Vstupné hodnoty
+## 1. Vstupné polia
 Zoznam a nastavenie všetkých stĺpcov v databáze, vstupov vo formulároch, validácia, dáta vo vypíse záznamov sú reprezentované parametrom `$fields`.
 
-##### Pre statické vstupné hodnoty:
+##### Pre statické vstupné polia:
 
 ```php
 protected $fields = [
@@ -28,7 +28,7 @@ protected $fields = [
 ];
 ```
 
-##### Pre dynamický generované vstupné hodnoty:
+##### Pre dynamický generované vstupné polia:
 Pri dynamickom generovaní parametrov, je možné pozmeniť pravidla pre ukladanie záznamu, kde sa ako parameter funkcie vráti práve upravovaný záznam v databáze.
 
 ?> V nasledujúcom príklade je znázornené, že pri úprave existujúceho záznamu, chceme aplikovať výnimku validácie unikátnej emailovej adresy pre upravovaný záznam.
