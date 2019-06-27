@@ -188,8 +188,12 @@ Príklad s upozornením pred vykonaním akcie. Otázka je typu komponenty so vst
 ```php
 public function question()
 {
+    $person = Article::first();
+
     return $this->title('Fill your age')
-                ->component('FillAgeComponent.vue');
+                ->component('FillAgeComponent.vue', [
+                    'person' => $person
+                ]);
 }
 ```
 
@@ -200,13 +204,14 @@ public function question()
         <label>How old are you?</label>
         <input type="text" v-model="request.age" class="form-control">
 
+        <p>My name is {{ data.person.username }}</p>
         <p>I am {{ request.age||'???' }} years old.</p>
     </div>
 </template>
 
 <script type="text/javascript">
 export default {
-    props : ['model', 'row', 'rows', 'request'],
+    props : ['model', 'row', 'rows', 'request', 'data'],
 }
 </script>
 ```
@@ -221,3 +226,5 @@ public function fire()
     return $this->success($message);
 }
 ```
+
+!> Do metódy `component($component, $data)` je možné vložiť druhy parameter s dátami, ktoré budú dostupné vo VueJs komponente pomocou property `data`.
