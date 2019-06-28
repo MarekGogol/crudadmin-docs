@@ -105,7 +105,7 @@ Vue.use(Gettext);
 
 !> **.PO** súbor určeny k prekladu je dostupný k stiahnutiu v administrácii.
 
-#### 2. Zápis prekladov v aplikácii
+#### 2. Zápis prekladov v aplikácii :id=frontend-gettext-syntax
 Pre správne načítanie prekladov v aplikácii, je potrebné zapísať všetky statické texty v správnom tvare. V nasledujúcich príkladoch, sú znázornené kombinácie prekladov vo viacerých jazykoch, ako pre singulár, tak aj vo forme plurálu.
 
 ##### PHP súbory

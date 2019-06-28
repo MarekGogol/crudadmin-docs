@@ -91,7 +91,7 @@ protected $title = 'Upravte zoznam článkov v sekcii blog.';
 
 ---
 
-#### Skupina modulov v administrácii
+#### Skupina modulov v administrácii :id=model-groups
 Admin Model v administrácii je možné priradiť do podskupiny, ktorú je možné definovať pri [konfigurácii systému](config.md#_2-Skupina-rozšírení).
 
 ```php
@@ -147,6 +147,19 @@ protected $sluggable = 'field-name';
 !> V databáze sa v tabuľke vytvorí stĺpec `slug`, ktorý bude obsahovať hodnotu z požadovaného stĺpca bez diakritiky a v tvare **nice url** adresy.
 
 ?> Viac o generovaní url adries pre hodnoty v modely a ich následne vyhľadávanie nájdete v sekcii [pekné url](model-sluggable.md#pekné-url).
+
+---
+
+#### Ukladanie zmien záznamov :id=model-history
+Pre ukládanie zmien v administrácii pri záznamoch je možné zapnúť históriu zmien, pomocou nasledujúceho parametru.
+
+```php
+protected $history = true;
+```
+
+![history-support](images/preview/history-support.png)
+
+!> Pre fungovanie histórie zmien je potrebné v konfigurácii administrácie zapnúť [históriu zmien](config.md#config-history).
 
 ---
 
