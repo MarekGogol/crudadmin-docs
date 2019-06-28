@@ -30,7 +30,7 @@ $article = Article::find(1);
 $image = $article->image;
 ```
 
-Premenná `$image` obsahuje obrázok reprezentovaný triedou [Gogol\Admin\Helpers\File](https://github.com/MarekGogol/crudadmin/blob/master/src/Helpers/File.php), ktorá sa postará v šablone o jednoduchý výpis a ďalšiu zjednodušenú prácu so súborom.
+Premenná `$image` obsahuje obrázok reprezentovaný triedou [Admin\Helpers\File](https://github.com/crudadmin/crudadmin/blob/master/src/Helpers/File.php), ktorá sa postará v šablone o jednoduchý výpis a ďalšiu zjednodušenú prácu so súborom.
 
 ![articleimage](images/article-image-dd.png)
 
@@ -47,7 +47,7 @@ Výsledok v atribúte `src` bude plná cestá k súboru *https://example.com/upl
 
 ## Orezávanie a práca s obrázkom
 
-Trieda [Gogol\Admin\Helpers\File](https://github.com/MarekGogol/crudadmin/blob/master/src/Helpers/File.php) automatický poskytuje orez obrázkov, ktorý je možné vykonávať priamo v šablone.
+Trieda [Admin\Helpers\File](https://github.com/crudadmin/crudadmin/blob/master/src/Helpers/File.php) automatický poskytuje orez obrázkov, ktorý je možné vykonávať priamo v šablone.
 
 K orezu obrázkov slúži metóda `resize($width, $height)`, kde ako prvý parameter príjma šírku, a druhy výšku obrázku. Ak su definované oba parametre šírka a výška, bude sa obrázok orezávať v správnom pomere, ak je definovaná len jedna konštatna, obrázok ďalšiu veličinu dopočíta v správnom pomere.
 
@@ -62,7 +62,7 @@ K orezu obrázkov slúži metóda `resize($width, $height)`, kde ako prvý param
 
 ## Zložitejšie úkony s obrázkami
 
-Trieda [Gogol\Admin\Helpers\File](https://github.com/MarekGogol/crudadmin/blob/master/src/Helpers/File.php) využíva rozšírenie http://image.intervention.io/ , pomocou ktorého automatický dokáže robiť aj zložitejšie úkony s obrázkom, ktoré táto knižnica **Intervention Image** podporuje.
+Trieda [Admin\Helpers\File](https://github.com/crudadmin/crudadmin/blob/master/src/Helpers/File.php) využíva rozšírenie http://image.intervention.io/ , pomocou ktorého automatický dokáže robiť aj zložitejšie úkony s obrázkom, ktoré táto knižnica **Intervention Image** podporuje.
 
 K funkciam rozšírenia **Intervention Image** je možné pristúpiť pomocou metódy `image($mutators)`, pričom vstupný parameter tejto funkcie príjma pole s kľúčmi reprezentujúce názvy funkcií a jeho hodnoty ako parametre danej funkcie, ktoré sa maju nad obrázkom vykonať.
 

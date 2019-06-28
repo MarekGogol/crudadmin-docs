@@ -43,7 +43,7 @@ Pre aktiváciu automatického presmerovania na predvolenú jazykovú verziu je p
     protected $middleware = [
         ...
 
-        \Gogol\Admin\Middleware\LocalizationMiddleware::class,
+        \Admin\Middleware\LocalizationMiddleware::class,
     ];
 ```
 

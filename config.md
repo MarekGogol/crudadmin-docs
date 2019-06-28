@@ -1,5 +1,5 @@
 # Konfigurácia
-Po úspešnej inštalácii sa vytvorí konfiguračný súbor [config/admin.php](https://github.com/MarekGogol/crudadmin/blob/master/src/Config/config.php) v ktorom sú definované základne globálne nastavenia administrácie. V tomto konfiguračnom súbore je možné doplniť dodatočné rozšírené nastavenia, čím je možné škálovať funkcionalitu rozšírenia.
+Po úspešnej inštalácii sa vytvorí konfiguračný súbor [config/admin.php](https://github.com/crudadmin/crudadmin/blob/master/src/Config/config.php) v ktorom sú definované základne globálne nastavenia administrácie. V tomto konfiguračnom súbore je možné doplniť dodatočné rozšírené nastavenia, čím je možné škálovať funkcionalitu rozšírenia.
 
 ---
 
@@ -48,7 +48,7 @@ Rozšírenie Gettext v spolupráci s rozšírením CrudAdmin automaticky skenuje
 ## Rozšírené nastavenia
 K základným nastaveniam administrácie, rozšírenie CrudAdmin poskytuje ďalšie množstvo volitelných parametrov, ktoré je možné v konfiguračnom súbore `config/admin.php` prepísať. Tieto nastavenia môžu služit pre lepšie škálovanie projektu.
 
-> Doplnkový administračný súbor https://github.com/MarekGogol/crudadmin/blob/master/src/Config/config_additional.php
+> Doplnkový administračný súbor https://github.com/crudadmin/crudadmin/blob/master/src/Config/config_additional.php
 
 ##### 1. Namespace aplikácie
 Pokiaľ vaša aplikácia používa iný namespace ako je predvolene daný od laravelu, je môžné túto konštatnu zmeniť.
@@ -66,7 +66,7 @@ V prípade, ak aplikácia nevie rozoznať jazykovú mutáciu podľa vami zadanej
 ```
 
 !> Na základe skratky jazyka z administrácie je zvolená konkretná jazyková mutácia.
-> Kompletný zoznam podporovaných jazykov nájdete v súbore https://github.com/MarekGogol/crudadmin/blob/master/src/Helpers/Gettext.php
+> Kompletný zoznam podporovaných jazykov nájdete v súbore https://github.com/crudadmin/crudadmin/blob/master/src/Helpers/Gettext.php
 
 ##### 3. Gettext mapovanie súborov
 Rozšírenie Gettext dokáže čítať zo zdrojových súborov texty a následne ich prekládať. Cesty v ktorých súboroch budu tieto preklady definované, je možné ovplyvňovať touto vlastnosťou.

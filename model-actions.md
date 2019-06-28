@@ -111,7 +111,7 @@ Metóda `fire` slúži k vykonaniu akcie nad jednym záznamom pri kliku z postra
 
 ```php
 use Illuminate\Support\Collection;
-use Gogol\Admin\Models\Model as AdminModel;
+use Admin\Models\Model as AdminModel;
 
 class ChangeOrderStatusButton extends Button
 {

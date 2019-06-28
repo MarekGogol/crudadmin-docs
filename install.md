@@ -24,12 +24,12 @@ php artisan key:generate
 ---
 
 ## 2. Pridanie rozšírenia CrudAdmin
-Po úspešnej inštalácii Laravelu potrebujeme pridať nové rozšírenie. Balíček môžte taktiež nájsť na adrese https://packagist.org/packages/marekgogol/crudadmin.
+Po úspešnej inštalácii Laravelu potrebujeme pridať nové rozšírenie. Balíček môžte taktiež nájsť na adrese https://packagist.org/packages/crudadmin/crudadmin.
 
 ### Cez composer
 
 ```bash
-composer require "marekgogol/crudadmin"
+composer require "crudadmin/crudadmin"
 ```
 
 ### Registrácia rozšírenia do Laravelu (Laravel < 5.5)
@@ -38,7 +38,7 @@ V prípade nižšiej verzie postupujte následovne.
 
 Pridáme do `config/app.php` service provider, ktorým povieme Laravelu aby načítal náš balíček.
 ```php
-Gogol\Admin\Providers\AppServiceProvider::class
+Admin\Providers\AppServiceProvider::class
 ```
 
 ## 3. Inštalácia rozšírenia

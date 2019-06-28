@@ -16,7 +16,7 @@ navigovaniu používateľa a všetko kompletné prelinkuje.
 
 ![models-structure](images/models-structure.png)
 
-?> **Tip.** Ikony vyberá automaticky podľa názvov modelov v angličtine. https://github.com/MarekGogol/crudadmin/blob/master/src/Traits/ModelIcons.php
+?> **Tip.** Ikony vyberá automaticky podľa názvov modelov v angličtine. https://github.com/crudadmin/crudadmin/blob/master/src/Traits/ModelIcons.php
 
 ---
 

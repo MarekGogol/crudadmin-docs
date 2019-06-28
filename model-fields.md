@@ -512,7 +512,7 @@ export default {
 
 Vstupné polia je možné usporiadavať a prerozdeľovať do skupín, vďaka čomu vieme spriehľadniť zložitejšie formuláre s väčším množstvom vstupných polí.
 
-Skupinu vytvorime vložením vstupných hodnôt do jednej metódy z triedy `Gogol\Admin\Fields\Group`, ktorá je dostupná v každom vytvorenom admin modely.
+Skupinu vytvorime vložením vstupných hodnôt do jednej metódy z triedy `Admin\Fields\Group`, ktorá je dostupná v každom vytvorenom admin modely.
 
 !> Skupine je možné nastaviť názov, jednoduchšie orientovanie vo formulári. Názov je možné definovať dvoma spôsobmi, ako prvý je vloženim do kľúča poľa a druhý je pomocou metódy `name()`.
 
