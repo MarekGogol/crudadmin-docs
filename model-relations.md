@@ -11,7 +11,7 @@ Rozšírenie CrudAdmin plne automatizovalo všetky relácie medzi modelmi automa
 
 <hr>
 
-## Stromové vetvenie modelov
+## Stromové vetvenie modelov :id=belongsToModel
 
 Medzi stromové vetvenie modelov patrí relácia **Many to one**, kde k jednému záznamu je možné priradiť ďalšie pod-zaznámy. V tomto prípade bude pri úprave záznamu v administrácii zobrazený ďalší vnorený formulár na správu záznamov, ktoré budú naviazané na existujúci rodičovský záznam.
 
